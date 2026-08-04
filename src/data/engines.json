@@ -1,0 +1,566 @@
+{
+  "engines": [
+    {
+      "id": "mem0",
+      "name": "Mem0",
+      "org": "Mem0 Team (YC Alumni)",
+      "orgType": "company",
+      "tagline": "图记忆 + 知识图谱，为生产环境而生的记忆层",
+      "logo": "M",
+      "color": "#6366f1",
+      "architecture": {
+        "type": "graph",
+        "memoryLevels": ["实体记忆", "关系记忆", "事件记忆"],
+        "selfManaged": false,
+        "description": "将对话中的信息自动提取为实体-关系三元组，构建持续演化的知识图谱"
+      },
+      "metrics": {
+        "latency": 92,
+        "scalability": 95,
+        "accuracy": 88,
+        "costEfficiency": 78,
+        "developerExperience": 94
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 19,
+        "model": "tiered",
+        "details": "Hobby免费(1K记忆/10K请求)，Starter $19/月，Pro $249/月"
+      },
+      "links": {
+        "website": "https://mem0.ai",
+        "docs": "https://docs.mem0.ai",
+        "github": "https://github.com.mem0.dev"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from mem0 import MemoryClient\n\nclient = MemoryClient(api_key=\"your-key\")\n\n# 添加记忆\nclient.add(\n    messages=[{\"role\": \"user\", \"content\": \"我正在学习Python\"}],\n    user_id=\"user_123\"\n)\n\n# 检索记忆\nresults = client.search(\n    query=\"用户在学习什么？\",\n    user_id=\"user_123\"\n)"
+      },
+      "useCases": {
+        "recommended": ["客户支持", "个人助手", "教育辅导", "医疗健康"],
+        "notRecommended": ["纯学术研究", "超长对话(100轮+)"]
+      },
+      "highlights": [
+        "AWS Bedrock 官方集成",
+        "Graph Memory 专利技术",
+        "4行代码快速集成",
+        "41K+ GitHub Stars"
+      ],
+      "limitations": [
+        "免费版功能受限",
+        "长对话场景略显不足"
+      ]
+    },
+    {
+      "id": "memgpt",
+      "name": "MemGPT",
+      "org": "UC Berkeley",
+      "orgType": "academic",
+      "tagline": "类操作系统内存管理，突破上下文限制",
+      "logo": "MG",
+      "color": "#8b5cf6",
+      "architecture": {
+        "type": "hierarchical",
+        "memoryLevels": ["主内存(工作上下文)", "外部内存(召回存储+归档存储)"],
+        "selfManaged": true,
+        "description": "将LLM视为虚拟内存系统的处理器，通过函数调用实现内存页面调度"
+      },
+      "metrics": {
+        "latency": 75,
+        "scalability": 82,
+        "accuracy": 90,
+        "costEfficiency": 72,
+        "developerExperience": 70
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "完全开源，托管服务由Letta提供"
+      },
+      "links": {
+        "website": "https://memgpt.com",
+        "docs": "https://docs.memgpt.com",
+        "github": "https://github.com/MemGPT"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from memgpt import MemGPT\nfrom memgpt import presets\n\n# 创建代理\nagent = MemGPT(\n    preset=presets.DEFAULT,\n    persona=\"你是一个有帮助的AI助手\",\n    human=\"用户\"\n)\n\n# 对话\nresponse = agent.send_message(\n    message=\"记住我喜欢用Python编程\",\n)\n\n# 检索历史\nhistory = agent.get_messages()"
+      },
+      "useCases": {
+        "recommended": ["超长文档分析", "多会话推理", "学术研究"],
+        "notRecommended": ["快速原型开发", "商业产品"]
+      },
+      "highlights": [
+        "学术顶级论文支撑",
+        "LLM自主内存调度",
+        "突破上下文窗口限制",
+        "Letta商业化支持"
+      ],
+      "limitations": [
+        "集成复杂度较高",
+        "需要大量配置"
+      ]
+    },
+    {
+      "id": "memos",
+      "name": "MemOS",
+      "org": "清华大学 BAI-LAB",
+      "orgType": "academic",
+      "tagline": "多层记忆系统，短中长记忆自动分层",
+      "logo": "MO",
+      "color": "#06b6d4",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["短时记忆", "中时记忆", "长时记忆"],
+        "selfManaged": false,
+        "description": "采用存储-更新-检索-生成四模块架构，支持多层次记忆自动管理"
+      },
+      "metrics": {
+        "latency": 88,
+        "scalability": 85,
+        "accuracy": 86,
+        "costEfficiency": 85,
+        "developerExperience": 82
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "完全开源，支持本地部署"
+      },
+      "links": {
+        "website": "https://bai-lab.github.io/MemoryOS",
+        "docs": "https://bai-lab.github.io/MemoryOS/docs",
+        "github": "https://github.com/BAI-LAB/MemoryOS"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from memoryos import Memoryos\n\nmemo = Memoryos(\n    user_id=\"demo_user\",\n    openai_api_key=\"your-key\",\n    llm_model=\"gpt-4o-mini\"\n)\n\n# 添加记忆\nmemo.add_memory(\n    user_input=\"我是Tom，在旧金山做数据科学家\",\n    agent_response=\"很高兴认识你，Tom！\"\n)\n\n# 检索\nprofile = memo.get_user_profile()"
+      },
+      "useCases": {
+        "recommended": ["个性化助手", "长期陪伴AI", "多模态应用"],
+        "notRecommended": ["实时性要求极高场景"]
+      },
+      "highlights": [
+        "SOTA长时记忆Benchmark",
+        "F1提升49.11%",
+        "多层次自动记忆管理",
+        "支持MCP协议"
+      ],
+      "limitations": [
+        "文档以英文为主",
+        "生态相对年轻"
+      ]
+    },
+    {
+      "id": "timem",
+      "name": "TiMem",
+      "org": "中科院自动化所",
+      "orgType": "academic",
+      "tagline": "时间层级记忆，像人脑一样逐层抽象",
+      "logo": "TM",
+      "color": "#f59e0b",
+      "architecture": {
+        "type": "hierarchical",
+        "memoryLevels": ["L1碎片", "L2会话摘要", "L3日模式", "L4周趋势", "L5稳定画像"],
+        "selfManaged": false,
+        "description": "将记忆按时间维度分层，常用信息逐层上浮，稳定特征长期保存"
+      },
+      "metrics": {
+        "latency": 90,
+        "scalability": 88,
+        "accuracy": 91,
+        "costEfficiency": 88,
+        "developerExperience": 75
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "完全开源，支持本地部署"
+      },
+      "links": {
+        "website": "https://timem.cloud",
+        "docs": "https://github.com/TiMEM-AI/timem#readme",
+        "github": "https://github.com/TiMEM-AI/timem"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# pip install timem-ai\nfrom timem import TiMEM\n\nmemory = TiMEM(api_key=\"your-key\")\n\n# 存储对话\nmemory.add(\n    user_id=\"user_123\",\n    content=\"我最近在学Rust，之前一直写Python\"\n)\n\n# 检索\nresults = memory.search(\n    user_id=\"user_123\",\n    query=\"这个用户会什么编程语言？\"\n)"
+      },
+      "useCases": {
+        "recommended": ["超长对话(100轮+)", "个性化推荐", "用户画像构建"],
+        "notRecommended": ["需要即时反馈的聊天机器人"]
+      },
+      "highlights": [
+        "LoCoMo Benchmark 75.30% 最高分",
+        "LongMemEval-S 76.88% 最高分",
+        "Token消耗降低52.2%",
+        "5层时间层级架构"
+      ],
+      "limitations": [
+        "刚发布不久，生态待完善",
+        "主要支持学术场景"
+      ]
+    },
+    {
+      "id": "memorybear",
+      "name": "MemoryBear",
+      "org": "红熊 AI (Suanmo Suanyang Technology)",
+      "orgType": "company",
+      "tagline": "类脑记忆系统，感知→提炼→关联→遗忘的完整认知循环",
+      "logo": "MB",
+      "color": "#dc2626",
+      "architecture": {
+        "type": "graph",
+        "memoryLevels": ["事件记忆", "人物记忆", "场景记忆", "情感记忆"],
+        "selfManaged": false,
+        "description": "以生物大脑认知机制为原型，构建感知→提炼→关联→遗忘的动态图重构记忆系统，支持多模态增量记忆"
+      },
+      "metrics": {
+        "latency": 94,
+        "scalability": 90,
+        "accuracy": 97,
+        "costEfficiency": 92,
+        "developerExperience": 85
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "tiered",
+        "details": "提供免费层，一键安装无限使用，支持任意AI应用集成"
+      },
+      "links": {
+        "website": "https://www.memorybear.ai",
+        "docs": "https://github.com/SuanmoSuanyangTechnology/MemoryBear",
+        "github": "https://github.com/SuanmoSuanyangTechnology/MemoryBear"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from memorybear import MemoryBear\n\n# 初始化记忆熊\nbear = MemoryBear(api_key=\"your-key\")\n\n# 添加多模态记忆\nbear.add(\n    user_id=\"user_123\",\n    content=\"我最近在学Rust，之前一直写Python\",\n    modality=\"text\"\n)\n\n# 语义检索\nresults = bear.search(\n    user_id=\"user_123\",\n    query=\"用户会什么编程语言？\"\n)"
+      },
+      "useCases": {
+        "recommended": ["AI客服", "营销场景", "教育场景", "医疗场景", "电商场景", "零售场景"],
+        "notRecommended": ["纯学术研究"]
+      },
+      "highlights": [
+        "回忆准确率 96.88%（高于 OpenAI 52.90%、Mem0 66.88%）",
+        "Token 消耗减少 90%",
+        "多模态记忆感知准确率 97%",
+        "情感计算识别 8 种核心情绪",
+        "动态图重构技术，非冗余存储"
+      ],
+      "limitations": [
+        "商业化产品，开源程度有限",
+        "主要面向企业级应用场景"
+      ]
+    },
+    {
+      "id": "memorylake",
+      "name": "MemoryLake",
+      "org": "MemoryLake AI",
+      "orgType": "company",
+      "tagline": "每个 AI 的记忆之湖，多模态记忆基础设施",
+      "logo": "ML",
+      "color": "#0ea5e9",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["背景记忆", "事实记忆", "事件记忆", "对话记忆", "反思记忆", "技能记忆"],
+        "selfManaged": false,
+        "description": "多模态记忆基础设施，支持对话、文档、表格、音频、视频统一管理。三方加密架构，平台方无法读取用户记忆"
+      },
+      "metrics": {
+        "latency": 96,
+        "scalability": 98,
+        "accuracy": 94,
+        "costEfficiency": 95,
+        "developerExperience": 90
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "tiered",
+        "details": "永久免费层，高级计划可选，无需信用卡"
+      },
+      "links": {
+        "website": "https://memorylake.ai",
+        "docs": "https://memorylake.ai",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from memorylake import MemoryLake\n\n# 初始化记忆湖\nlake = MemoryLake(api_key=\"your-key\")\n\n# 添加多模态记忆\nlake.add(\n    user_id=\"user_123\",\n    content=\"我正在做一个AI项目，用Python和PyTorch\",\n    modality=\"text\"\n)\n\n# 语义检索\nresults = lake.search(\n    user_id=\"user_123\",\n    query=\"用户在做什么项目？\",\n    filters={\"type\": \"fact\"}\n)"
+      },
+      "useCases": {
+        "recommended": ["个人AI助手", "企业级记忆管理", "多AI平台协作", "数据分析", "合规审计"],
+        "notRecommended": ["无需记忆的一次性问答"]
+      },
+      "highlights": [
+        "LoCoMo 基准测试全球第一 94.03%",
+        "支持 6 种记忆类型（背景/事实/事件/对话/反思/技能）",
+        "三方加密，平台架构上无法读取用户记忆",
+        "数据规模扩展 10,000 倍，Token 成本降低 90%+",
+        "类 Git 记忆版本管理 + 冲突检测 + 完整审计追踪",
+        "内置开放数据集（4000万+论文、SEC文件、临床试验等）",
+        "支持 20+ 多模态数据集成（MySQL、PostgreSQL、Office365、Lark等）"
+      ],
+      "limitations": [
+        "商业化产品，非开源",
+        "主要面向企业和团队场景"
+      ]
+    },
+    {
+      "id": "omnimemory",
+      "name": "OmniMemory",
+      "org": "OmniMemory AI",
+      "orgType": "company",
+      "tagline": "下一代智能记忆基础架构，多模态记忆+深度用户画像",
+      "logo": "OM",
+      "color": "#7c3aed",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["认知层", "感知层", "物理层"],
+        "selfManaged": false,
+        "description": "三层架构：物理层（数据摄入）→感知层（分类/去重/评分/衰减）→认知层（用户画像/意图理解）。支持视频、文本、音频、动作多模态记忆"
+      },
+      "metrics": {
+        "latency": 95,
+        "scalability": 92,
+        "accuracy": 94,
+        "costEfficiency": 93,
+        "developerExperience": 88
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "tiered",
+        "details": "Build 计划永久免费；Enterprise 按设备/QPS/年合同定制"
+      },
+      "links": {
+        "website": "https://www.omnimemory.ai",
+        "docs": "https://www.omnimemory.ai",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from omnimemory import OmniMemory\n\n# 初始化\nomni = OmniMemory(api_key=\"your-key\")\n\n# 摄入多模态记忆\nomni.ingest(\n    user_id=\"user_123\",\n    content=\"我最近在研究AI记忆系统\",\n    modality=\"text\"\n)\n\n# 检索\nresults = omni.retrieve(\n    user_id=\"user_123\",\n    query=\"用户在研究什么？\",\n    time_horizon=\"7d\"\n)"
+      },
+      "useCases": {
+        "recommended": ["AI助手", "多模态记忆", "用户画像", "教育场景", "医疗场景"],
+        "notRecommended": ["纯文档检索"]
+      },
+      "highlights": [
+        "LoCoMo 基准 93.50%（高于 MemOS 75.80%）",
+        "Token 节省最高 50%",
+        "原始证据保留 80%",
+        "检索延迟 ≤500ms",
+        "三层架构：认知层+感知层+物理层",
+        "支持视频/文本/音频/动作多模态",
+        "深度用户画像，动态进化",
+        "防篡改记忆保存"
+      ],
+      "limitations": [
+        "较新的产品，生态待完善",
+        "非开源"
+      ]
+    },
+    {
+      "id": "zep",
+      "name": "Zep",
+      "org": "Zep Inc.",
+      "orgType": "company",
+      "tagline": "企业级 Agent 记忆基础设施，时序上下文图+知识图谱",
+      "logo": "ZP",
+      "color": "#059669",
+      "architecture": {
+        "type": "graph",
+        "memoryLevels": ["时序记忆", "知识图谱", "实体记忆"],
+        "selfManaged": true,
+        "description": "时序上下文图（Temporal Context Graph）自动构建知识图谱，支持实体提取、边类型自定义、矛盾检测。可部署在 Cloud/VPC/BYOC"
+      },
+      "metrics": {
+        "latency": 88,
+        "scalability": 96,
+        "accuracy": 91,
+        "costEfficiency": 85,
+        "developerExperience": 92
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "credit",
+        "details": "Free: 10,000 credits/月；Flex: $125/月 50k credits；Flex Plus: $375/月 200k credits；Enterprise: 定制"
+      },
+      "links": {
+        "website": "https://www.getzep.com",
+        "docs": "https://www.getzep.com/docs",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "from zep_cloud import Zep\n\nclient = Zep(api_key=\"your-key\")\n\n# 添加记忆\nclient.memory.add(\n    user_id=\"user_123\",\n    messages=[{\"role\": \"user\", \"content\": \"我喜欢Python\"}]\n)\n\n# 检索记忆\nresults = client.memory.search(\n    user_id=\"user_123\",\n    text=\"用户喜欢什么语言？\"\n)"
+      },
+      "useCases": {
+        "recommended": ["企业级Agent", "合规审计", "知识图谱", "多项目管理"],
+        "notRecommended": ["个人轻量使用", "低成本场景"]
+      },
+      "highlights": [
+        "时序上下文图，自动构建知识图谱",
+        "SOC 2 Type II + HIPAA BAA 认证",
+        "支持 Cloud / VPC / BYOC 多种部署",
+        "自定义实体和边类型",
+        "Webhooks + 分析面板",
+        "S&P Global 认可的企业级方案"
+      ],
+      "limitations": [
+        "付费门槛较高（$125/月起）",
+        "非开源",
+        "面向企业，个人使用成本高"
+      ],
+      "resources": [
+        {
+          "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+          "type": "paper",
+          "date": "2025-01-20",
+          "url": "https://arxiv.org/abs/2501.13956",
+          "description": "Zep 官方论文，提出 Graphiti 时序知识图谱引擎。DMR 基准 94.8%（vs MemGPT 93.4%），LongMemEval 准确率提升 18.5%，延迟降低 90%"
+        },
+        {
+          "title": "Using Knowledge Graphs to Power LLM Agent Memory",
+          "type": "whitepaper",
+          "date": "2025-01-17",
+          "url": "https://blog.getzep.com/content/files/2025/01/ZEP__USING_KNOWLEDGE_GRAPHS_TO_POWER_LLM_AGENT_MEMORY_2025011700.pdf",
+          "description": "Zep 白皮书，详细阐述如何用知识图谱驱动 LLM Agent 记忆，包括 Graphiti 引擎的设计原理和企业应用案例"
+        },
+        {
+          "title": "Key Concepts | Zep Documentation",
+          "type": "docs",
+          "date": "2025-01-15",
+          "url": "https://help.getzep.com/concepts",
+          "description": "Zep 核心概念文档：Context Graph、Context Block、Fact Invalidation、User Graph、Threads 等关键概念详解"
+        }
+      ]
+    },
+    {
+      "id": "supermemory",
+      "name": "Supermemory",
+      "org": "Supermemory Inc.",
+      "orgType": "company",
+      "tagline": "Agent 的上下文云，记忆+RAG+用户画像+连接器一体化",
+      "logo": "SM",
+      "color": "#f59e0b",
+      "architecture": {
+        "type": "graph",
+        "memoryLevels": ["记忆", "SuperRAG", "用户画像", "连接器", "提取器"],
+        "selfManaged": true,
+        "description": "统一知识图谱架构，记忆/RAG/画像在同一图中。支持动态做梦（dynamic dreaming）、矛盾检测、遗忘机制。可自托管或云部署"
+      },
+      "metrics": {
+        "latency": 98,
+        "scalability": 95,
+        "accuracy": 96,
+        "costEfficiency": 90,
+        "developerExperience": 94
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "tiered",
+        "details": "Free: $0；Pro: $19/月；Max: $100/月；Scale: $399/月。按 SM tokens 计费，重复内容不收费"
+      },
+      "links": {
+        "website": "https://supermemory.ai",
+        "docs": "https://supermemory.ai/docs",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "typescript",
+        "code": "import { Supermemory } from \"supermemory\";\n\nconst sm = new Supermemory();\n\n// 存储记忆\nawait sm.memories.create({\n  content: \"我正在研究AI记忆系统\",\n  userId: \"user_123\"\n});\n\n// 检索\nconst results = await sm.memories.search({\n  q: \"用户在研究什么？\",\n  userId: \"user_123\"\n});"
+      },
+      "useCases": {
+        "recommended": ["AI助手", "知识库", "个人记忆", "多平台协作", "文档检索"],
+        "notRecommended": []
+      },
+      "highlights": [
+        "LongMemEval/LoCoMo/ConvoMem 基准全部 SOTA",
+        "检索延迟 <300ms，比 Zep 快 10×，比 Mem0 快 25×",
+        "统一图谱：记忆+RAG+画像在同一结构中",
+        "支持 Connectors（Slack/Notion/Drive/GitHub/Gmail/S3）",
+        "文件系统挂载：grep 变成语义搜索",
+        "自托管 / Cloud / 空气隔离部署",
+        "Hermes/Claude Code/OpenClaw 插件支持",
+        "Token 去重计费，重复内容不收费",
+        "SOC 2 + GDPR 合规"
+      ],
+      "limitations": [
+        "较新的产品",
+        "非开源（但可自托管）"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "architecture",
+      "name": "架构设计",
+      "icon": "Cpu",
+      "weight": 0.25,
+      "metrics": [
+        { "id": "innovation", "name": "架构创新", "weight": 0.10 },
+        { "id": "scalability", "name": "可扩展性", "weight": 0.15 }
+      ]
+    },
+    {
+      "id": "performance",
+      "name": "性能指标",
+      "icon": "Zap",
+      "weight": 0.30,
+      "metrics": [
+        { "id": "latency", "name": "响应延迟", "weight": 0.15 },
+        { "id": "throughput", "name": "吞吐量", "weight": 0.10 },
+        { "id": "efficiency", "name": "记忆效率", "weight": 0.05 }
+      ]
+    },
+    {
+      "id": "cost",
+      "name": "成本效益",
+      "icon": "Coins",
+      "weight": 0.20,
+      "metrics": [
+        { "id": "freeTier", "name": "免费套餐", "weight": 0.10 },
+        { "id": "scaling", "name": "规模化成本", "weight": 0.10 }
+      ]
+    },
+    {
+      "id": "dx",
+      "name": "开发者体验",
+      "icon": "Code",
+      "weight": 0.15,
+      "metrics": [
+        { "id": "docs", "name": "文档质量", "weight": 0.05 },
+        { "id": "sdk", "name": "SDK完善度", "weight": 0.05 },
+        { "id": "integration", "name": "集成难度", "weight": 0.05 }
+      ]
+    },
+    {
+      "id": "scenario",
+      "name": "场景适配",
+      "icon": "Target",
+      "weight": 0.10,
+      "metrics": [
+        { "id": "short", "name": "短对话", "weight": 0.03 },
+        { "id": "long", "name": "长对话", "weight": 0.04 },
+        { "id": "multimodal", "name": "多模态", "weight": 0.03 }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "AI 记忆框架对比分析",
+      "type": "report",
+      "date": "2025-11-18",
+      "url": "https://aigilitycloud.feishu.cn/wiki/R070wgF72ihM1skERqncbgovnjc",
+      "description": "2025年前沿AI记忆框架全景技术分析报告，涵盖四大范式：操作系统范式（AIOS/MemGPT）、结构化检索与知识图谱（Zep）、认知仿生架构、潜在空间与生成式记忆。深入分析LoCoMo/LongMemEval基准表现"
+    }
+  ]
+}
