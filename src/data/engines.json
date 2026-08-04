@@ -552,6 +552,57 @@
         { "id": "long", "name": "长对话", "weight": 0.04 },
         { "id": "multimodal", "name": "多模态", "weight": 0.03 }
       ]
+    },
+    {
+      "id": "silicon-memory",
+      "name": "硅基记忆",
+      "org": "硅基记忆 (Silicon Memory)",
+      "orgType": "company",
+      "tagline": "面向机器人的长期记忆引擎，记住你，越用越懂你",
+      "logo": "硅",
+      "color": "#f97316",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["云端记忆引擎", "本地记忆中心"],
+        "selfManaged": true,
+        "description": "自研iMemory记忆模型，支持多模态记忆、长期召回与连续上下文，提供云端SaaS与本地私有化两种部署形态"
+      },
+      "metrics": {
+        "latency": 85,
+        "scalability": 88,
+        "accuracy": 87,
+        "costEfficiency": 80,
+        "developerExperience": 83
+      },
+      "pricing": {
+        "freeTier": false,
+        "startingPrice": 0,
+        "model": "enterprise",
+        "details": "API/SaaS/私有化部署，面向企业方案合作"
+      },
+      "links": {
+        "website": "https://seemem.com",
+        "docs": "https://seemem.com",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# 硅基记忆 iMemory API\nimport requests\n\n# 添加记忆\nresp = requests.post(\n    \"https://api.seemem.com/v1/memory/add\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"content\": \"我今天和李总又见面了\",\n        \"modal\": \"text\"\n    }\n)\n\n# 长期召回\nresults = requests.post(\n    \"https://api.seemem.com/v1/memory/search\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"query\": \"李总是做什么的？\"\n    }\n)"
+      },
+      "useCases": {
+        "recommended": ["智能硬件/机器人", "数字人", "陪伴场景", "空间智能"],
+        "notRecommended": ["纯学术研究", "个人开发者原型"]
+      },
+      "highlights": [
+        "自研iMemory记忆模型",
+        "多模态记忆与长期召回",
+        "云端+本地双形态部署",
+        "面向机器人与智能硬件场景"
+      ],
+      "limitations": [
+        "面向企业，无免费tier",
+        "产品较新，社区生态待建设"
+      ]
     }
   ],
   "resources": [

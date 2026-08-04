@@ -24,8 +24,8 @@ export default function Navbar() {
               <Brain className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="font-serif text-xl font-semibold text-ink-deep">记忆之境</span>
-              <span className="hidden sm:block text-xs text-ink-light">Agent Memory</span>
+                <span className="font-serif text-xl font-semibold text-ink-deep">Agent Memory</span>
+              <span className="hidden sm:block text-xs text-ink-light">agent-memory.cn</span>
             </div>
           </Link>
 

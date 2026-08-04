@@ -76,10 +76,10 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-5xl md:text-7xl font-bold text-ink-deep mb-6 leading-tight"
             >
-              记忆之境
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold to-cyan">
-                Agent Memory
-                </span>
+              Agent Memory
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold to-cyan">
+                LLM Memory Engine Evaluation
+              </span>
             </motion.h1>
 
             {/* 副标题 */}
@@ -276,8 +276,8 @@ export default function HomePage() {
                 <Brain className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-serif text-lg font-semibold">记忆之境</span>
-                <span className="block text-xs text-white/60">Agent Memory · agent-memory.cn</span>
+                <span className="font-serif text-lg font-semibold">Agent Memory</span>
+                <span className="block text-xs text-white/60">agent-memory.cn</span>
               </div>
             </div>
             <p className="text-white/40 text-sm">

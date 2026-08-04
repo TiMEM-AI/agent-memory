@@ -337,7 +337,7 @@ export default function InsightsPage() {
       {/* Footer */}
       <footer className="py-8 bg-ink-deep text-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-white/40 text-sm">记忆之境 · 独立第三方评测平台</p>
+          <p className="text-white/40 text-sm">Agent Memory · 独立第三方评测平台</p>
         </div>
       </footer>
     </div>
