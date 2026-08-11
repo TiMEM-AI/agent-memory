@@ -10,92 +10,101 @@
       "color": "#6366f1",
       "architecture": {
         "type": "graph",
-        "memoryLevels": ["实体记忆", "关系记忆", "事件记忆"],
+        "memoryLevels": ["用户记忆", "会话记忆", "Agent 状态记忆"],
         "selfManaged": false,
-        "description": "将对话中的信息自动提取为实体-关系三元组，构建持续演化的知识图谱"
+        "description": "将对话信息自动提取为实体-关系三元组构建持续演化的知识图谱。2026 年 4 月推出新一代记忆算法：单遍 ADD-only 提取、Agent 生成事实作为一等公民、实体链接、多信号检索（语义+BM25+实体）与时间推理"
       },
       "metrics": {
         "latency": 92,
         "scalability": 95,
-        "accuracy": 88,
-        "costEfficiency": 78,
+        "accuracy": 91,
+        "costEfficiency": 82,
         "developerExperience": 94
       },
       "pricing": {
         "freeTier": true,
         "startingPrice": 19,
         "model": "tiered",
-        "details": "Hobby免费(1K记忆/10K请求)，Starter $19/月，Pro $249/月"
+        "details": "开源 Apache-2.0；Hobby 免费(1K 记忆/10K 请求)，Starter $19/月，Pro $249/月；亦可自托管或全托管"
       },
       "links": {
         "website": "https://mem0.ai",
         "docs": "https://docs.mem0.ai",
-        "github": "https://github.com.mem0.dev"
+        "github": "https://github.com/mem0ai/mem0"
       },
       "codeExample": {
         "language": "python",
         "code": "from mem0 import MemoryClient\n\nclient = MemoryClient(api_key=\"your-key\")\n\n# 添加记忆\nclient.add(\n    messages=[{\"role\": \"user\", \"content\": \"我正在学习Python\"}],\n    user_id=\"user_123\"\n)\n\n# 检索记忆\nresults = client.search(\n    query=\"用户在学习什么？\",\n    user_id=\"user_123\"\n)"
       },
       "useCases": {
-        "recommended": ["客户支持", "个人助手", "教育辅导", "医疗健康"],
-        "notRecommended": ["纯学术研究", "超长对话(100轮+)"]
+        "recommended": ["客户支持", "个人助手", "教育辅导", "医疗健康", "AI Agent 长期记忆"],
+        "notRecommended": ["纯本地无 LLM 调用场景", "超长对话(100轮+)且未做分层"]
       },
       "highlights": [
-        "AWS Bedrock 官方集成",
-        "Graph Memory 专利技术",
-        "4行代码快速集成",
-        "41K+ GitHub Stars"
+        "63K+ GitHub Stars，AI 记忆领域头部开源项目",
+        "2026.04 新记忆算法：LoCoMo 92.5 / LongMemEval 94.4",
+        "多信号检索（语义+BM25+实体）+ 时间推理",
+        "支持库 / 自托管 / 全托管 + Claude Code/Codex/Cursor Agent Skills"
       ],
       "limitations": [
-        "免费版功能受限",
-        "长对话场景略显不足"
+        "免费版功能与额度受限",
+        "依赖 LLM 调用，长对话需合理分层"
+      ],
+      "resources": [
+        {
+          "title": "Mem0 GitHub — Universal memory layer for AI Agents",
+          "type": "github",
+          "date": "2026-04",
+          "url": "https://github.com/mem0ai/mem0",
+          "description": "官方仓库，2026 年 4 月发布新一代记忆算法（单遍提取、实体链接、多信号检索、时间推理），并公布 LoCoMo/LongMemEval/BEAM 基准大幅提升"
+        }
       ]
     },
     {
       "id": "memgpt",
-      "name": "MemGPT",
-      "org": "UC Berkeley",
-      "orgType": "academic",
-      "tagline": "类操作系统内存管理，突破上下文限制",
+      "name": "MemGPT (Letta)",
+      "org": "Letta (formerly UC Berkeley / MemGPT)",
+      "orgType": "company",
+      "tagline": "类操作系统内存管理，突破上下文限制，可自我改进",
       "logo": "MG",
       "color": "#8b5cf6",
       "architecture": {
         "type": "hierarchical",
-        "memoryLevels": ["主内存(工作上下文)", "外部内存(召回存储+归档存储)"],
+        "memoryLevels": ["主内存(工作上下文/核心记忆)", "外部内存(召回存储+归档存储)"],
         "selfManaged": true,
-        "description": "将LLM视为虚拟内存系统的处理器，通过函数调用实现内存页面调度"
+        "description": "将 LLM 视为虚拟内存系统的处理器，通过函数调用实现内存页面调度（主内存/外部内存自动换页）。项目已更名为 Letta，定位为「具状态智能体平台」，记忆可随时间学习并自我改进"
       },
       "metrics": {
         "latency": 75,
         "scalability": 82,
         "accuracy": 90,
         "costEfficiency": 72,
-        "developerExperience": 70
+        "developerExperience": 80
       },
       "pricing": {
         "freeTier": true,
         "startingPrice": 0,
         "model": "open-source",
-        "details": "完全开源，托管服务由Letta提供"
+        "details": "开源 Apache-2.0；自托管 App Server 免费，托管服务由 Letta Cloud (Constellation) 提供"
       },
       "links": {
-        "website": "https://memgpt.com",
-        "docs": "https://docs.memgpt.com",
-        "github": "https://github.com/MemGPT"
+        "website": "https://www.letta.com",
+        "docs": "https://docs.letta.com",
+        "github": "https://github.com/letta-ai/letta"
       },
       "codeExample": {
         "language": "python",
-        "code": "from memgpt import MemGPT\nfrom memgpt import presets\n\n# 创建代理\nagent = MemGPT(\n    preset=presets.DEFAULT,\n    persona=\"你是一个有帮助的AI助手\",\n    human=\"用户\"\n)\n\n# 对话\nresponse = agent.send_message(\n    message=\"记住我喜欢用Python编程\",\n)\n\n# 检索历史\nhistory = agent.get_messages()"
+        "code": "from letta_client import Letta\n\nclient = Letta(token=\"YOUR_TOKEN\")\n\n# 创建具状态 Agent（含记忆）\nagent = client.agents.create(\n    name=\"assistant\",\n    memory_blocks=[{\"label\": \"human\", \"value\": \"用户\"}]\n)\n\n# 对话（自动读写记忆）\nclient.agents.messages.create(\n    agent_id=agent.id,\n    messages=[{\"role\": \"user\", \"content\": \"记住我喜欢用 Python 编程\"}]\n)"
       },
       "useCases": {
-        "recommended": ["超长文档分析", "多会话推理", "学术研究"],
-        "notRecommended": ["快速原型开发", "商业产品"]
+        "recommended": ["超长文档分析", "多会话推理", "具状态 Agent", "需自我改进的 AI 应用"],
+        "notRecommended": ["追求极简 SDK 集成的轻量场景", "不愿自托管"]
       },
       "highlights": [
-        "学术顶级论文支撑",
-        "LLM自主内存调度",
-        "突破上下文窗口限制",
-        "Letta商业化支持"
+        "源自 UC Berkeley 顶会论文，已商业化更名为 Letta",
+        "虚拟内存式自主内存调度，突破上下文窗口",
+        "记忆可学习、自我改进（self-improve）",
+        "24K+ GitHub Stars，提供 Agent SDK 与 Code CLI"
       ],
       "limitations": [
         "集成复杂度较高",
@@ -104,17 +113,17 @@
     },
     {
       "id": "memos",
-      "name": "MemOS",
-      "org": "清华大学 BAI-LAB",
+      "name": "MemoryOS",
+      "org": "北京邮电大学 BaiJia AI (白婷团队)",
       "orgType": "academic",
-      "tagline": "多层记忆系统，短中长记忆自动分层",
+      "tagline": "多层记忆系统，短中长记忆自动分层，面向个性化 Agent",
       "logo": "MO",
       "color": "#06b6d4",
       "architecture": {
         "type": "hybrid",
-        "memoryLevels": ["短时记忆", "中时记忆", "长时记忆"],
+        "memoryLevels": ["短时记忆", "中时记忆", "长期记忆(人格/知识)"],
         "selfManaged": false,
-        "description": "采用存储-更新-检索-生成四模块架构，支持多层次记忆自动管理"
+        "description": "借鉴操作系统内存管理（段页式、FIFO 置换、热度淘汰），采用存储-更新-检索-生成四模块架构，支持短/中/长三级记忆自动分层与晋升；存储、更新、检索策略均可插拔"
       },
       "metrics": {
         "latency": 88,
@@ -127,7 +136,7 @@
         "freeTier": true,
         "startingPrice": 0,
         "model": "open-source",
-        "details": "完全开源，支持本地部署"
+        "details": "开源 Apache-2.0，支持本地部署与 Docker；提供 PyPI 包 memoryos-pro 与 MemoryOS-MCP"
       },
       "links": {
         "website": "https://bai-lab.github.io/MemoryOS",
@@ -139,24 +148,33 @@
         "code": "from memoryos import Memoryos\n\nmemo = Memoryos(\n    user_id=\"demo_user\",\n    openai_api_key=\"your-key\",\n    llm_model=\"gpt-4o-mini\"\n)\n\n# 添加记忆\nmemo.add_memory(\n    user_input=\"我是Tom，在旧金山做数据科学家\",\n    agent_response=\"很高兴认识你，Tom！\"\n)\n\n# 检索\nprofile = memo.get_user_profile()"
       },
       "useCases": {
-        "recommended": ["个性化助手", "长期陪伴AI", "多模态应用"],
-        "notRecommended": ["实时性要求极高场景"]
+        "recommended": ["个性化助手", "长期陪伴AI", "多模态应用", "通过 MCP 接入 Cline/Cursor/Claude"],
+        "notRecommended": ["实时性要求极高且无分层必要场景"]
       },
       "highlights": [
-        "SOTA长时记忆Benchmark",
-        "F1提升49.11%",
-        "多层次自动记忆管理",
-        "支持MCP协议"
+        "EMNLP 2025 Oral，LoCoMo 长时记忆 F1 +49.11% / BLEU-1 +46.18%",
+        "操作系统式内存管理：段页式 + FIFO + 热度淘汰",
+        "存储/更新/检索策略可插拔",
+        "提供 MemoryOS-MCP 与 Chromadb 向量版，1.6K+ Stars"
       ],
       "limitations": [
         "文档以英文为主",
-        "生态相对年轻"
+        "生态相对年轻，与工业级 MemOS(MemTensor) 易混淆"
+      ],
+      "resources": [
+        {
+          "title": "MemoryOS GitHub — [EMNLP 2025 Oral] 面向个性化 AI 智能体的记忆操作系统",
+          "type": "github",
+          "date": "2025-08-21",
+          "url": "https://github.com/BAI-LAB/MemoryOS",
+          "description": "北邮 BaiJia AI 团队开源；2026-01 发布 AI Memory 综述，2025-09 开源 Playground，支持 Chromadb/Deepseek-r1/Qwen3 与 MemoryOS-MCP"
+        }
       ]
     },
     {
       "id": "timem",
       "name": "TiMem",
-      "org": "中科院自动化所",
+      "org": "中科院自动化所 (智悦云创 / 创始人余宣庆)",
       "orgType": "academic",
       "tagline": "时间层级记忆，像人脑一样逐层抽象",
       "logo": "TM",
@@ -165,7 +183,7 @@
         "type": "hierarchical",
         "memoryLevels": ["L1碎片", "L2会话摘要", "L3日模式", "L4周趋势", "L5稳定画像"],
         "selfManaged": false,
-        "description": "将记忆按时间维度分层，常用信息逐层上浮，稳定特征长期保存"
+        "description": "Temporal-Hierarchical Memory Consolidation：将记忆按时间维度分层，常用信息逐层上浮，稳定特征长期保存；通过分层巩固降低 token 消耗"
       },
       "metrics": {
         "latency": 90,
@@ -202,6 +220,15 @@
       "limitations": [
         "刚发布不久，生态待完善",
         "主要支持学术场景"
+      ],
+      "resources": [
+        {
+          "title": "告别记忆碎片化！TiMem：为 AI Agent 装上分层记忆大脑，Token 成本直降 52%",
+          "type": "article",
+          "date": "2026-02-10",
+          "url": "https://blog.csdn.net/qq_40302568/article/details/157939024",
+          "description": "中科院自动化所余宣庆团队提出 TiMem（Temporal-Hierarchical Memory Consolidation），5 层时间层级记忆，LoCoMo 75.30%、LongMemEval-S 76.88%，token 消耗降低 52.2%"
+        }
       ]
     },
     {
@@ -246,20 +273,29 @@
       },
       "highlights": [
         "回忆准确率 96.88%（高于 OpenAI 52.90%、Mem0 66.88%）",
-        "Token 消耗减少 90%",
-        "多模态记忆感知准确率 97%",
+        "Token 消耗减少 90%，多模态感知准确率 97%",
         "情感计算识别 8 种核心情绪",
-        "动态图重构技术，非冗余存储"
+        "动态图重构技术，非冗余存储",
+        "2026-07 红熊 AI 发布会登顶 LoCoMo 与 LongMemEval 记忆双榜"
       ],
       "limitations": [
         "商业化产品，开源程度有限",
         "主要面向企业级应用场景"
+      ],
+      "resources": [
+        {
+          "title": "红熊 AI MemoryBear 登顶全球记忆双榜，刷新 SOTA",
+          "type": "news",
+          "date": "2026-07-31",
+          "url": "https://tech.ifeng.com/c/8vCcxu7Ytup",
+          "description": "红熊 AI 在 2026 产品发布会展示「记忆科学」全栈生态，底层 MemoryBear 类脑记忆引擎登顶 LoCoMo 与 LongMemEval 双榜"
+        }
       ]
     },
     {
       "id": "memorylake",
       "name": "MemoryLake",
-      "org": "MemoryLake AI",
+      "org": "质变科技 (Relyt)",
       "orgType": "company",
       "tagline": "每个 AI 的记忆之湖，多模态记忆基础设施",
       "logo": "ML",
@@ -308,6 +344,15 @@
       "limitations": [
         "商业化产品，非开源",
         "主要面向企业和团队场景"
+      ],
+      "resources": [
+        {
+          "title": "首个多模态记忆湖 MemoryLake 发布：AI 基础设施迈入记忆驱动时代",
+          "type": "news",
+          "date": "2026-02-09",
+          "url": "https://www.leiphone.com/category/ai/tQF0ahbkW8nRkVqN.html",
+          "description": "质变科技发布 MemoryLake，由 MemoryLake-D1 大模型、MemoryLake 记忆引擎、Relyt 多模态存储与计算平台三大组件构成，LoCoMo 基准全球第一（94%）"
+        }
       ]
     },
     {
@@ -363,6 +408,15 @@
       "limitations": [
         "较新的产品，生态待完善",
         "非开源"
+      ],
+      "resources": [
+        {
+          "title": "当 AI 开始「记得」你：与两位创业者拆解 AI 记忆技术",
+          "type": "article",
+          "date": "2026-02-14",
+          "url": "https://zhuanlan.zhihu.com/p/2005981366878246279",
+          "description": "丘脑科技创始人介绍其多模态记忆产品 Omni Memory，强调视频/文本/音频/动作多模态记忆与深度用户画像"
+        }
       ]
     },
     {
@@ -395,7 +449,7 @@
       "links": {
         "website": "https://www.getzep.com",
         "docs": "https://www.getzep.com/docs",
-        "github": ""
+        "github": "https://github.com/getzep/graphiti"
       },
       "codeExample": {
         "language": "python",
@@ -439,6 +493,13 @@
           "date": "2025-01-15",
           "url": "https://help.getzep.com/concepts",
           "description": "Zep 核心概念文档：Context Graph、Context Block、Fact Invalidation、User Graph、Threads 等关键概念详解"
+        },
+        {
+          "title": "Graphiti | Thoughtworks Technology Radar (Trial, 2026-04)",
+          "type": "article",
+          "date": "2026-04-15",
+          "url": "https://www.thoughtworks.com/zh-cn/radar/platforms/graphiti",
+          "description": "Thoughtworks 将 Zep 开源的时序知识图谱引擎 Graphiti 从 Assess 提升至 Trial，认可其在生产环境解决 LLM 记忆问题的可行性（20K+ GitHub Stars）"
         }
       ]
     },
@@ -472,7 +533,7 @@
       "links": {
         "website": "https://supermemory.ai",
         "docs": "https://supermemory.ai/docs",
-        "github": ""
+        "github": "https://github.com/supermemoryai/supermemory"
       },
       "codeExample": {
         "language": "typescript",
@@ -496,6 +557,15 @@
         "limitations": [
         "较新的产品",
         "非开源（但可自托管）"
+      ],
+      "resources": [
+        {
+          "title": "Supermemory GitHub — Memory engine and app for AI agents",
+          "type": "github",
+          "date": "2026",
+          "url": "https://github.com/supermemoryai/supermemory",
+          "description": "提供 Hermes agent 记忆 provider 与 MCP 一键安装（npx install-mcp@latest --client claude），支持 Cursor/Windsurf/VSCode 等客户端"
+        }
       ]
     },
     {
@@ -570,7 +640,7 @@
         "type": "vector",
         "memoryLevels": ["Profile 画像", "Resource 资源", "Event 事件", "Action 行为"],
         "selfManaged": false,
-        "description": "基于腾讯云向量数据库构建，采用四层渐进式记忆架构（Profile/Resource/Event/Action）+ 双路召回（关键词+语义），2.0 版本新增 Team Memory 支持团队级长期记忆按角色与任务装配给不同 Agent"
+        "description": "腾讯云数据库团队研发、2026-04 发布、2026-05-14 开源的「龙虾(Hermes)」记忆引擎；基于腾讯云向量数据库，采用四层渐进式记忆架构（Profile/Resource/Event/Action）+ 双路召回（关键词+语义），2.0 版本新增 Team Memory 支持团队级长期记忆按角色与任务装配给不同 Agent"
       },
       "metrics": {
         "latency": 90,
@@ -682,6 +752,13 @@
           "date": "2026-06-10",
           "url": "https://cloud.tencent.com/developer/article/2686121",
           "description": "字节跳动火山引擎推出 OpenViking，用文件系统范式（viking:// 协议）统一管理记忆、资源和技能，L0/L1/L2 三层按需加载，实测降低 80-91% token 消耗"
+        },
+        {
+          "title": "OpenViking 官方文档：Self-evolving Context Database for Agents",
+          "type": "docs",
+          "date": "2026-02-02",
+          "url": "https://developer.volcengine.com/articles/7602117247670157322",
+          "description": "火山引擎官方介绍 OpenViking 的 viking:// 协议、资源/记忆/技能统一管理与语义检索（ov add / ov find / ov grep）用法"
         }
       ]
     },
@@ -742,15 +819,22 @@
           "date": "2026-04-17",
           "url": "https://blog.csdn.net/weixin_53961451/article/details/160257784",
           "description": "上海交大与阿里通义联合提出的 ReMe 框架，以「文件即记忆」让记忆可读可改可迁移，展示「记忆换规模」效果，成为可审计 AI 记忆方向的标杆项目"
+        },
+        {
+          "title": "8B小模型干翻大模型！阿里通义联合提出智能体记忆框架 ReMe",
+          "type": "article",
+          "date": "2025-12-22",
+          "url": "https://zhuanlan.zhihu.com/p/1986503444115252113",
+          "description": "深入拆解 ReMe 三大核心机制：多维度蒸馏、上下文自适应重用、基于效用的精炼，揭示「记忆即资产」如何以小模型挑战大模型表现"
         }
       ]
     },
     {
       "id": "silicon-memory",
       "name": "硅基记忆",
-      "org": "硅基记忆 (Silicon Memory)",
+      "org": "硅基记忆 (深圳) 科技有限公司",
       "orgType": "company",
-      "tagline": "面向机器人的长期记忆引擎，记住你，越用越懂你",
+      "tagline": "面向机器人与智能硬件的长期记忆引擎，记住你，越用越懂你",
       "logo": "硅",
       "color": "#f97316",
       "architecture": {
@@ -788,12 +872,21 @@
       "highlights": [
         "自研iMemory记忆模型",
         "多模态记忆与长期召回",
-        "云端+本地双形态部署",
-        "面向机器人与智能硬件场景"
+        "云端(记忆引擎)+本地(Memory Studio)双形态部署",
+        "热插拔式记忆，面向机器人与智能硬件/数字人场景"
       ],
       "limitations": [
         "面向企业，无免费tier",
         "产品较新，社区生态待建设"
+      ],
+      "resources": [
+        {
+          "title": "硅基记忆：把记忆做成「热插拔式」工具，落地机器人与智能硬件",
+          "type": "news",
+          "date": "2026-06-01",
+          "url": "https://baijiahao.baidu.com/s?id=1866793018846293301",
+          "description": "硅基记忆（深圳）科技的 iMemory 记忆引擎与 Memory Studio 本地记忆中心，通过 AI 产品、智能硬件、数字人、垂类 Agent、个人记忆中心等场景积累真实记忆数据与工程经验"
+        }
       ]
     }
   ],
