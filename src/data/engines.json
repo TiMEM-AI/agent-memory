@@ -493,9 +493,307 @@
         "Token 去重计费，重复内容不收费",
         "SOC 2 + GDPR 合规"
       ],
-      "limitations": [
+        "limitations": [
         "较新的产品",
         "非开源（但可自托管）"
+      ]
+    },
+    {
+      "id": "mindmemos",
+      "name": "MindMemOS",
+      "org": "华为诺亚方舟实验室 (Huawei Noah's Ark Lab)",
+      "orgType": "company",
+      "tagline": "AI Agent 记忆操作系统，记忆可迁移、自演进",
+      "logo": "MM",
+      "color": "#cf1322",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["文本记忆", "情景记忆", "参数记忆", "技能记忆"],
+        "selfManaged": true,
+        "description": "将记忆从单一 Agent 中剥离为可插拔的「随身硬脑」，通过 Memory Context Bank (MCB) 统一存储，配合 Dreaming 巩固机制压缩活跃记忆、把记忆转化为可复用技能，记忆可随 Agent 迁移"
+      },
+      "metrics": {
+        "latency": 87,
+        "scalability": 92,
+        "accuracy": 94,
+        "costEfficiency": 89,
+        "developerExperience": 80
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "MIT 协议完全开源，支持本地部署；官网 mindmemos.cn"
+      },
+      "links": {
+        "website": "https://mindmemos.cn",
+        "docs": "https://github.com/mindscale-noah/MindMemOS",
+        "github": "https://github.com/mindscale-noah/MindMemOS"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# pip install mindmemos\nfrom mindmemos import MindMemOS\n\n# 初始化记忆操作系统（可插拔给任意 Agent）\nmemory_os = MindMemOS(\n    memory_bank_path=\"./memory_bank\",\n    agent_id=\"my_agent\"\n)\n\n# 写入对话记忆\nmemory_os.add(\n    user_id=\"user_123\",\n    content=\"我正在用 Python 做推荐系统\"\n)\n\n# 让记忆自行巩固并沉淀为技能\nmemory_os.dream()\n\n# 检索跨 Agent 可迁移记忆\nresults = memory_os.search(query=\"用户的研究方向？\")"
+      },
+      "useCases": {
+        "recommended": ["多 Agent 协作", "长期记忆迁移", "技能沉淀复用", "企业级 Agent"],
+        "notRecommended": ["轻量级一次性问答", "无本地部署资源场景"]
+      },
+      "highlights": [
+        "LoCoMo 94.03 分，PersonaMem 70.63%",
+        "Dreaming 压缩 19.4%-23.5% 活跃记忆",
+        "记忆与技能协同自演进",
+        "MIT 开源，记忆可随 Agent 带走"
+      ],
+      "limitations": [
+        "较新项目，生态待完善",
+        "需本地存储 Memory Bank"
+      ],
+      "resources": [
+        {
+          "title": "MindMemOS: 可迁移、自演进的 AI Agent 记忆操作系统",
+          "type": "report",
+          "date": "2026-08-03",
+          "url": "https://hub.baai.ac.cn/view/56850",
+          "description": "华为诺亚方舟实验室发布 MindMemOS，把记忆从存储层抬升到系统层，解决「怎样记、记什么、怎么纠错、怎么巩固、怎么把记忆变成技能」五大问题，支持记忆随 Agent 迁移"
+        }
+      ]
+    },
+    {
+      "id": "tencent-agent-memory",
+      "name": "Tencent Agent Memory",
+      "org": "腾讯云 (Tencent Cloud)",
+      "orgType": "company",
+      "tagline": "基于向量数据库的四层渐进式记忆，支持团队记忆",
+      "logo": "TA",
+      "color": "#0052d9",
+      "architecture": {
+        "type": "vector",
+        "memoryLevels": ["Profile 画像", "Resource 资源", "Event 事件", "Action 行为"],
+        "selfManaged": false,
+        "description": "基于腾讯云向量数据库构建，采用四层渐进式记忆架构（Profile/Resource/Event/Action）+ 双路召回（关键词+语义），2.0 版本新增 Team Memory 支持团队级长期记忆按角色与任务装配给不同 Agent"
+      },
+      "metrics": {
+        "latency": 90,
+        "scalability": 93,
+        "accuracy": 76,
+        "costEfficiency": 84,
+        "developerExperience": 88
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "TencentDB Agent Memory 开源项目；依托腾讯云向量数据库，按向量数据库实例计费"
+      },
+      "links": {
+        "website": "https://cloud.tencent.com/product/agm",
+        "docs": "https://cloud.tencent.com/developer/article/2668579",
+        "github": "https://github.com/TencentCloud/tencentdb-agent-memory"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# TencentDB Agent Memory\nfrom tencent_agent_memory import AgentMemory\n\nmemory = AgentMemory(\n    vector_db={\"host\": \"localhost\", \"port\": 8080},\n    user_id=\"user_123\"\n)\n\n# 写入四层记忆\nmemory.add_event(\"用户今天在用 Python 重构推荐系统\")\n\n# 双路召回检索\nresults = memory.recall(\n    query=\"用户在做什么项目？\",\n    mode=\"hybrid\"  # 关键词 + 语义\n)"
+      },
+      "useCases": {
+        "recommended": ["团队协作开发", "代码库/文档记忆", "企业知识沉淀", "多 Agent 装配"],
+        "notRecommended": ["纯本地轻量部署", "对准确率要求极高的复杂推理"]
+      },
+      "highlights": [
+        "四层渐进式架构 + 双路召回，准确率 76.10%",
+        "2.0 全新 Team Memory 团队级记忆",
+        "复用腾讯云向量数据库，跨会话持久记忆",
+        "已集成 CodeBuddy / OpenClaw / Claude Code"
+      ],
+      "limitations": [
+        "准确率相对图谱类方案偏低",
+        "依赖腾讯云向量数据库生态"
+      ],
+      "resources": [
+        {
+          "title": "TencentDB Agent Memory 正式开源：让 Agent 沉淀经验",
+          "type": "article",
+          "date": "2026-05-13",
+          "url": "https://cloud.tencent.com/developer/article/2668579",
+          "description": "腾讯云介绍 TencentDB Agent Memory 的设计理念：让 Agent 学会工作流程、保留任务上下文、复用历史经验，基于向量数据库构建四层渐进式记忆"
+        },
+        {
+          "title": "腾讯云 Agent Memory 2.0.0 发布 Team Memory 版本",
+          "type": "news",
+          "date": "2026-08-06",
+          "url": "https://news.mydrivers.com/1/1142/1142116.htm",
+          "description": "腾讯云发布 Agent Memory 2.0.0，核心升级 Team Memory，将长期记忆能力从个人扩展到团队协作场景，支持对话、文档、代码库、Skill 统一保存并按角色装配"
+        }
+      ]
+    },
+    {
+      "id": "openviking",
+      "name": "OpenViking",
+      "org": "字节跳动火山引擎 (Volcano Engine)",
+      "orgType": "company",
+      "tagline": "AI Agent 上下文数据库，用文件系统范式统一管理记忆",
+      "logo": "OV",
+      "color": "#fe2c55",
+      "architecture": {
+        "type": "hierarchical",
+        "memoryLevels": ["L0 原始上下文", "L1 会话摘要", "L2 长期记忆"],
+        "selfManaged": true,
+        "description": "采用文件系统范式（viking:// 协议）统一管理记忆、资源与技能，通过 L0/L1/L2 三层按需加载，将长上下文压缩为结构化文件。337K 行代码、Python+Rust+Go+C++ 四语言架构，AGPL-3.0 / Apache-2.0 开源"
+      },
+      "metrics": {
+        "latency": 91,
+        "scalability": 96,
+        "accuracy": 90,
+        "costEfficiency": 92,
+        "developerExperience": 85
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "Apache-2.0 开源，可自托管；LoCoMo 等基准已公开评测报告"
+      },
+      "links": {
+        "website": "https://github.com/volcengine/OpenViking",
+        "docs": "https://github.com/volcengine/OpenViking",
+        "github": "https://github.com/volcengine/OpenViking"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# pip install openviking\nfrom openviking import VikingDB\n\n# 以文件系统范式挂载 Agent 记忆\ndb = VikingDB(uri=\"viking://localhost:8080\")\n\n# 按需加载上下文（L0/L1/L2 三层）\nprofile = db.read(\"user/memories/profile.md\")\nevents = db.read(\"user/memories/events/\")\n\n# 写入长期记忆\nuser/memories/events/diary = db.write(\n    \"用户正在研究记忆系统架构\"\n)"
+      },
+      "useCases": {
+        "recommended": ["超长上下文管理", "多 Agent 资源共享", "文件系统式记忆", "代码库级记忆"],
+        "notRecommended": ["简单键值记忆场景", "不愿自托管团队"]
+      },
+      "highlights": [
+        "L0/L1/L2 三层摘要，实测降低 80-91% token 消耗",
+        "viking:// 文件系统范式，记忆可读可改可迁移",
+        "LoCoMo / tau2-bench 已评测",
+        "337K 行代码，Python+Rust+Go+C++ 工程深度"
+      ],
+      "limitations": [
+        "需自托管，运维成本较高",
+        "文件系统范式学习曲线偏陡"
+      ],
+      "resources": [
+        {
+          "title": "OpenViking: AI Agent 上下文数据库，三层摘要省 token",
+          "type": "article",
+          "date": "2026-06-10",
+          "url": "https://cloud.tencent.com/developer/article/2686121",
+          "description": "字节跳动火山引擎推出 OpenViking，用文件系统范式（viking:// 协议）统一管理记忆、资源和技能，L0/L1/L2 三层按需加载，实测降低 80-91% token 消耗"
+        }
+      ]
+    },
+    {
+      "id": "reme",
+      "name": "ReMe",
+      "org": "上海交通大学 & 阿里通义 (AgentScope Team)",
+      "orgType": "academic",
+      "tagline": "文件即记忆，可审计可演化的 Agent 记忆工具包",
+      "logo": "RM",
+      "color": "#ff6a00",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["个人记忆 (Personal)", "程序记忆 (Procedural)", "工具记忆 (Tool)", "工作记忆 (Working)"],
+        "selfManaged": false,
+        "description": "AgentScope 团队的模块化记忆工具包，核心是「文件即记忆」：记忆以可读文本文件沉淀，用户可改可迁移。通过多维度蒸馏、上下文自适应重用和基于效用的遗忘实现可审计、可演化的长期记忆，已集成进 AgentScope 1.0"
+      },
+      "metrics": {
+        "latency": 89,
+        "scalability": 84,
+        "accuracy": 88,
+        "costEfficiency": 90,
+        "developerExperience": 86
+      },
+      "pricing": {
+        "freeTier": true,
+        "startingPrice": 0,
+        "model": "open-source",
+        "details": "Apache-2.0 开源，GitHub 1.8K stars，作为 AgentScope 1.0 长期记忆默认实现"
+      },
+      "links": {
+        "website": "https://github.com/modelscope/agentscope",
+        "docs": "https://github.com/modelscope/agentscope/tree/main/src/agentscope/memory",
+        "github": "https://github.com/modelscope/agentscope"
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# AgentScope ReMe 长期记忆\nfrom agentscope.memory import ReMe\n\nmemory = ReMe(user_id=\"user_123\")\n\n# 以文件方式沉淀记忆\nmemory.remember(\n    content=\"用户偏好用 Python，正在学习记忆系统\",\n    memory_type=\"personal\"\n)\n\n# 自适应重用 + 效用遗忘检索\nresults = memory.recall(\n    query=\"用户会哪些语言？\",\n    reuse_context=True\n)"
+      },
+      "useCases": {
+        "recommended": ["可审计记忆", "小模型增强", "个人化 Agent", "研究实验"],
+        "notRecommended": ["黑盒不可解释场景", "超大规模生产"]
+      },
+      "highlights": [
+        "「文件即记忆」，可读可改可迁移、可审计",
+        "多维度蒸馏 + 效用遗忘，记忆可演化",
+        "8B 小模型借 ReMe 挑战大模型表现",
+        "已在 AgentScope 1.0 作为默认记忆实现"
+      ],
+        "limitations": [
+        "主要面向 AgentScope 生态",
+        "超大规模场景验证有限"
+      ],
+      "resources": [
+        {
+          "title": "ReMe: Remember Me, Refine Me — 可演化 Agent 记忆工具包",
+          "type": "report",
+          "date": "2026-04-17",
+          "url": "https://blog.csdn.net/weixin_53961451/article/details/160257784",
+          "description": "上海交大与阿里通义联合提出的 ReMe 框架，以「文件即记忆」让记忆可读可改可迁移，展示「记忆换规模」效果，成为可审计 AI 记忆方向的标杆项目"
+        }
+      ]
+    },
+    {
+      "id": "silicon-memory",
+      "name": "硅基记忆",
+      "org": "硅基记忆 (Silicon Memory)",
+      "orgType": "company",
+      "tagline": "面向机器人的长期记忆引擎，记住你，越用越懂你",
+      "logo": "硅",
+      "color": "#f97316",
+      "architecture": {
+        "type": "hybrid",
+        "memoryLevels": ["云端记忆引擎", "本地记忆中心"],
+        "selfManaged": true,
+        "description": "自研iMemory记忆模型，支持多模态记忆、长期召回与连续上下文，提供云端SaaS与本地私有化两种部署形态"
+      },
+      "metrics": {
+        "latency": 85,
+        "scalability": 88,
+        "accuracy": 87,
+        "costEfficiency": 80,
+        "developerExperience": 83
+      },
+      "pricing": {
+        "freeTier": false,
+        "startingPrice": 0,
+        "model": "enterprise",
+        "details": "API/SaaS/私有化部署，面向企业方案合作"
+      },
+      "links": {
+        "website": "https://seemem.com",
+        "docs": "https://seemem.com",
+        "github": ""
+      },
+      "codeExample": {
+        "language": "python",
+        "code": "# 硅基记忆 iMemory API\nimport requests\n\n# 添加记忆\nresp = requests.post(\n    \"https://api.seemem.com/v1/memory/add\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"content\": \"我今天和李总又见面了\",\n        \"modal\": \"text\"\n    }\n)\n\n# 长期召回\nresults = requests.post(\n    \"https://api.seemem.com/v1/memory/search\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"query\": \"李总是做什么的？\"\n    }\n)"
+      },
+      "useCases": {
+        "recommended": ["智能硬件/机器人", "数字人", "陪伴场景", "空间智能"],
+        "notRecommended": ["纯学术研究", "个人开发者原型"]
+      },
+      "highlights": [
+        "自研iMemory记忆模型",
+        "多模态记忆与长期召回",
+        "云端+本地双形态部署",
+        "面向机器人与智能硬件场景"
+      ],
+      "limitations": [
+        "面向企业，无免费tier",
+        "产品较新，社区生态待建设"
       ]
     }
   ],
@@ -551,57 +849,6 @@
         { "id": "short", "name": "短对话", "weight": 0.03 },
         { "id": "long", "name": "长对话", "weight": 0.04 },
         { "id": "multimodal", "name": "多模态", "weight": 0.03 }
-      ]
-    },
-    {
-      "id": "silicon-memory",
-      "name": "硅基记忆",
-      "org": "硅基记忆 (Silicon Memory)",
-      "orgType": "company",
-      "tagline": "面向机器人的长期记忆引擎，记住你，越用越懂你",
-      "logo": "硅",
-      "color": "#f97316",
-      "architecture": {
-        "type": "hybrid",
-        "memoryLevels": ["云端记忆引擎", "本地记忆中心"],
-        "selfManaged": true,
-        "description": "自研iMemory记忆模型，支持多模态记忆、长期召回与连续上下文，提供云端SaaS与本地私有化两种部署形态"
-      },
-      "metrics": {
-        "latency": 85,
-        "scalability": 88,
-        "accuracy": 87,
-        "costEfficiency": 80,
-        "developerExperience": 83
-      },
-      "pricing": {
-        "freeTier": false,
-        "startingPrice": 0,
-        "model": "enterprise",
-        "details": "API/SaaS/私有化部署，面向企业方案合作"
-      },
-      "links": {
-        "website": "https://seemem.com",
-        "docs": "https://seemem.com",
-        "github": ""
-      },
-      "codeExample": {
-        "language": "python",
-        "code": "# 硅基记忆 iMemory API\nimport requests\n\n# 添加记忆\nresp = requests.post(\n    \"https://api.seemem.com/v1/memory/add\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"content\": \"我今天和李总又见面了\",\n        \"modal\": \"text\"\n    }\n)\n\n# 长期召回\nresults = requests.post(\n    \"https://api.seemem.com/v1/memory/search\",\n    headers={\"Authorization\": \"Bearer YOUR_KEY\"},\n    json={\n        \"user_id\": \"user_123\",\n        \"query\": \"李总是做什么的？\"\n    }\n)"
-      },
-      "useCases": {
-        "recommended": ["智能硬件/机器人", "数字人", "陪伴场景", "空间智能"],
-        "notRecommended": ["纯学术研究", "个人开发者原型"]
-      },
-      "highlights": [
-        "自研iMemory记忆模型",
-        "多模态记忆与长期召回",
-        "云端+本地双形态部署",
-        "面向机器人与智能硬件场景"
-      ],
-      "limitations": [
-        "面向企业，无免费tier",
-        "产品较新，社区生态待建设"
       ]
     }
   ],

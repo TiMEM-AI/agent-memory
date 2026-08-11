@@ -5,10 +5,11 @@ const SITE_URL = 'https://agent-memory.cn'
 
 export const metadata: Metadata = {
   title: 'Agent Memory | LLM记忆引擎评测平台',
-  description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem等九大记忆引擎深度评测与对比，帮助开发者选择最适合的记忆解决方案',
+  description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem、MindMemOS、OpenViking、ReMe等主流记忆引擎深度评测与对比，帮助开发者选择最适合的记忆解决方案',
   keywords: [
     'LLM记忆引擎', '记忆引擎对比', 'AI记忆方案', 'agent memory',
     'Mem0', 'MemGPT', 'MemOS', 'TiMem', 'Zep', 'Supermemory', 'OmniMemory',
+    'MindMemOS', 'Tencent Agent Memory', 'OpenViking', 'ReMe', '硅基记忆',
     '龙虾记忆引擎', 'Hermes记忆引擎', 'AI agent记忆', '记忆层选型',
     'memory engine', 'LLM memory', 'agent memory evaluation',
   ],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Agent Memory | LLM记忆引擎评测平台',
-    description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem等九大记忆引擎深度评测与对比',
+    description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem、MindMemOS、OpenViking、ReMe等主流记忆引擎深度评测与对比',
     url: SITE_URL,
     siteName: 'Agent Memory',
     locale: 'zh_CN',
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Agent Memory | LLM记忆引擎评测平台',
-    description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem等九大记忆引擎深度评测与对比',
+    description: '龙虾用什么记忆引擎最好？Hermes用什么记忆引擎最好？Mem0、MemGPT、Zep、TiMem、MindMemOS、OpenViking、ReMe等主流记忆引擎深度评测与对比',
   },
   robots: {
     index: true,
