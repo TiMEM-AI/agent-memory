@@ -187,6 +187,15 @@ const insights = [
     date: '2026-08-17',
     featured: false,
   },
+  {
+    slug: 'skills-mcp-marketplace-survey',
+    title: 'Skills & MCP 市场收录调研：14 大记忆引擎在哪些 Agent 平台上架？',
+    excerpt: '逐一核实 14 款记忆引擎在 Claude Code、Codex、Cursor、OpenClaw ClawHub、mcp.so、glama.ai 六大平台的 Skills/MCP 收录情况，附上架矩阵与明细表。',
+    category: '行业动态',
+    readTime: '12分钟',
+    date: '2026-08-17',
+    featured: false,
+  },
 ]
 
 const categories = ['全部', '架构分析', '深度评测', '选型指南', '技术解析', '评测基准', '行业动态']

@@ -984,6 +984,133 @@ ACM 将记忆管理从工程问题提升为学科问题，为记忆系统的设�
 > 本文基于 arXiv 论文整理，原文链接：https://arxiv.org/abs/2607.21503
     `,
   },
+  'skills-mcp-marketplace-survey': {
+    title: 'Skills & MCP 市场收录调研：14 大记忆引擎在哪些 Agent 平台上架？',
+    excerpt: '逐一核实 14 款记忆引擎在 Claude Code、Codex、Cursor、OpenClaw ClawHub、mcp.so、glama.ai 六大平台的 Skills/MCP 收录情况，附上架矩阵与明细表。',
+    category: '行业动态',
+    readTime: '12分钟',
+    date: '2026-08-17',
+    content: `
+# Skills & MCP 市场收录调研：14 大记忆引擎在哪些 Agent 平台上架？
+
+> 调研日期：2026-08-17 ｜ 调研范围：Claude Code/Claude.ai、OpenAI Codex、Cursor、OpenClaw ClawHub、mcp.so、glama.ai
+
+## 引言：Agent 平台的 Skills 与 MCP 双轨生态
+
+2026 年，AI Agent 助理平台的扩展生态已清晰分化为两条轨道：Skills（教 Agent 怎么做的流程/提示词资产）与 MCP（给 Agent 接入外部工具/数据的协议通道）。前者是"说明书"，后者是"数据线"，两者互补。记忆引擎作为 Agent 的核心基础设施，自然成为各平台争相收录的重点品类。本文调研 14 款主流记忆引擎在 6 大平台的收录情况，为开发者选型与上架提供参考。
+
+## 各平台 Skills/MCP 市场现状
+
+### Claude Code / Claude.ai
+
+Claude Code 的 Skills 机制随 Agent SDK 推出，Skill 是一个含 SKILL.md 的目录，匹配触发条件时自动加载。分发渠道有三：项目本地 .claude/skills/、用户级 ~/.claude/skills/、以及插件包内嵌 skills。Claude Code 另有插件市场机制（claude plugin marketplace add），通过仓库内 marketplace.json 分发。官方 MCP Registry（registry.modelcontextprotocol.io）已收录 6,359 个 MCP server，参考实现含 Memory server。Claude.ai 桌面/网页端目前没有独立的 Skills Marketplace。
+
+### OpenAI Codex
+
+Codex CLI（106K+ GitHub Stars）支持在 config.toml 中配置 mcp_servers 接入 MCP，扩展性走 MCP + hooks 两条路，没有 Claude Code 那样的 Skills 概念，也无中央 marketplace。ChatGPT 自 2025-03 起支持远程 MCP server。OpenAI 未运营独立的 MCP 目录站，用户依赖 mcp.so / Glama / 官方 Registry 发现 server。
+
+### Cursor
+
+Cursor 在 2025 年率先把 MCP 配置搬进 GUI（Settings → MCP），配置写入 ~/.cursor/mcp.json。Cursor 没有自建的 MCP 市场，cursor.com/marketplace 仅展示少量 Featured 插件，无公开搜索 API，引导用户从第三方目录站发现 server。
+
+### OpenClaw ClawHub
+
+OpenClaw 是 2026 年崛起的开源个人 AI 助理项目，以 Claude Code 为对标，把 Skills 作为一等公民。ClawHub（clawhub.ai，9,319 Stars）是其公开 Skill + Plugin Registry，支持 clawhub login/search/install/publish 全流程 CLI。另有 npm 插件渠道（openclaw plugins install）。ClawHub 的 skill 格式与 Claude Code 同源，可视为 Claude Code Skills 生态在非 Anthropic 官方侧的延伸。
+
+### mcp.so
+
+mcp.so 是 2026 年规模最大的 MCP 目录站之一，由 trys.ai 团队运营，已从单纯 server 目录扩展为多品类市场（servers/clients/skills/agents/loops），形态接近"AI 工具 App Store"，收录规模约 18,000+ server。
+
+### glama.ai/mcp/servers
+
+glama.ai 是迄今最大的 MCP 目录站，页面实抓显示收录 73,156 个开源 MCP server，约为官方 Registry 的 11.5 倍。设有 Knowledge & Memory 分类标签，提供 MCP Inspector 在线调试，对记忆引擎类工具友好度最高。
+
+## 14 引擎上架情况汇总
+
+图例：✅ 官方上架 ｜ 🟡 社区收录 ｜ ⚪ 存在但未上架 ｜ ❌ 未找到
+
+| 引擎 | Claude Code | Codex | Cursor | OpenClaw | mcp.so | glama |
+|------|------------|-------|--------|----------|--------|-------|
+| Mem0 | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| MemGPT/Letta | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| MemoryOS | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| TiMem | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| MemoryBear | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ |
+| MemoryLake | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| OmniMemory | ❌ | ❌ | ❌ | 🟡 | ❌ | ❌ |
+| Zep | ✅ | ✅ | ✅ | 🟡 | 🟡 | ✅ |
+| Supermemory | ✅ | ⚪ | ⚪ | ✅ | ❌ | ✅ |
+| MindMemOS | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| Tencent Agent Memory | ⚪ | ⚪ | ❌ | ✅ | ❌ | ❌ |
+| OpenViking | ✅ | ✅ | ✅ | 🟡 | ❌ | 🟡 |
+| ReMe | ✅ | ✅ | ❌ | 🟡 | ❌ | ❌ |
+| 硅基记忆 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### 已上架条目明细
+
+下表列出所有 ✅ 官方上架、🟡 社区收录、⚪ 存在但未上架 的条目（❌ 未找到 省略）：
+
+| 引擎 | 平台 | 形式 | 链接 | 状态 |
+|------|------|------|------|------|
+| Mem0 | Claude Code | Skill+MCP+Plugin | github.com/mem0ai/mem0 | ✅ 官方 |
+| Mem0 | Codex | Skill+Plugin | github.com/mem0ai/mem0 | ✅ 官方 |
+| Mem0 | Cursor | Skill+MCP | github.com/mem0ai/mem0 | ✅ 官方 |
+| Mem0 | OpenClaw | Skill | github.com/mem0ai/mem0 | ✅ 官方 |
+| MemGPT/Letta | Claude Code | Skill+MCP | docs.letta.com | ✅ 官方 |
+| MemGPT/Letta | OpenClaw | Skill（ClawHub 来源） | clawhub.ai | ✅ 官方 |
+| MemoryOS | Claude Code | MCP（MemoryOS-MCP） | github.com/BAI-LAB/MemoryOS | ✅ 官方 |
+| MemoryOS | Cursor | MCP（MemoryOS-MCP） | github.com/BAI-LAB/MemoryOS | ✅ 官方 |
+| MemoryBear | mcp.so | MCP Listing | mcp.so/servers/memorybear | ✅ 官方 |
+| OmniMemory | OpenClaw | Skill | clawhub.ai/pt-vu/omnimemory-full-onboarding | 🟡 社区 |
+| Zep | Claude Code | Plugin+Skill+MCP | github.com/getzep/building-with-zep-plugin | ✅ 官方 |
+| Zep | Codex | Plugin+Skill+MCP | github.com/getzep/building-with-zep-plugin | ✅ 官方 |
+| Zep | Cursor | Plugin+Skill+MCP | github.com/getzep/building-with-zep-plugin | ✅ 官方 |
+| Zep | OpenClaw | Skill | clawhub.ai/emasoudy/graphiti | 🟡 社区 |
+| Zep | mcp.so | MCP Listing | mcp.so/servers/graphiti-mcp-server | 🟡 社区 |
+| Zep | glama | MCP Listing | glama.ai/mcp/servers/getzep/graphiti | ✅ 官方 |
+| Supermemory | Claude Code | Plugin | github.com/supermemoryai/claude-supermemory | ✅ 官方 |
+| Supermemory | Codex | hooks 集成 | github.com/supermemoryai/codex-supermemory | ⚪ 未上架 |
+| Supermemory | Cursor | npm 包+MCP | github.com/supermemoryai/cursor-supermemory | ⚪ 未上架 |
+| Supermemory | OpenClaw | npm 插件 | npmjs.com/package/@supermemory/openclaw-supermemory | ✅ 官方 |
+| Supermemory | glama | MCP Listing | glama.ai/mcp/servers/supermemoryai/supermemory | ✅ 官方 |
+| MindMemOS | OpenClaw | npm 插件 | npmjs.com/package/@mindmemos/openclaw-plugin | ✅ 官方 |
+| Tencent Agent Memory | Claude Code | Proxy 集成 | github.com/TencentCloud/tencentdb-agent-memory | ⚪ 未上架 |
+| Tencent Agent Memory | Codex | Proxy 集成 | github.com/TencentCloud/tencentdb-agent-memory | ⚪ 未上架 |
+| Tencent Agent Memory | OpenClaw | npm 插件 | npmjs.com/package/@tencentdb-agent-memory/memory-tencentdb | ✅ 官方 |
+| OpenViking | Claude Code | Plugin+MCP | github.com/volcengine/OpenViking | ✅ 官方 |
+| OpenViking | Codex | Plugin+MCP | github.com/volcengine/OpenViking | ✅ 官方 |
+| OpenViking | Cursor | Hooks+MCP+Skill | github.com/volcengine/OpenViking | ✅ 官方 |
+| OpenViking | OpenClaw | Skill（10+ 条） | clawhub.ai | 🟡 社区 |
+| OpenViking | glama | MCP（5 个 server） | glama.ai/mcp/servers/fencith/openviking-mcp | 🟡 社区 |
+| ReMe | Claude Code | Plugin+MCP+Skill | github.com/modelscope/agentscope | ✅ 官方 |
+| ReMe | Codex | Skill（CLI 式） | github.com/agentscope-ai/ReMe | ✅ 官方 |
+| ReMe | OpenClaw | Skill | clawhub.ai/minybear/skills/memory-reme | 🟡 社区 |
+
+## 分析与展望
+
+### 谁上架最广？
+
+Zep 是唯一 6/6 平台全覆盖的引擎——在 Claude Code、Codex、Cursor 三大编码助手均官方上架，glama 官方收录，mcp.so 与 ClawHub 社区收录，通过 getzep/building-with-zep-plugin 单仓库多市场清单分发。Mem0 紧随其后（4/6 官方上架），同时维护 marketplace.json 与多平台插件配置目录，并有 68 个社区 MCP 实现。OpenViking 在三大编码助手均有官方插件，且被 ClawHub 和 glama 社区收录（5/6 命中）。
+
+### 谁完全缺席？
+
+TiMem 和硅基记忆在全部 6 个平台均未找到任何上架或收录记录。TiMem 仓库无任何 MCP/Skill/Plugin 适配目录，仅作为 Python SDK / 云服务存在；硅基记忆官网无 MCP / 插件 / SDK 对外集成文档。MemoryLake 虽官网宣称"Memory for OpenClaw"且列出多个兼容平台，但所有平台均无实际条目，无公开 GitHub 仓库。
+
+### OpenClaw 成国产引擎首选分发渠道
+
+OpenClaw 的 npm 插件渠道（openclaw plugins install）成为 MindMemOS、Tencent Agent Memory、Supermemory 等引擎的官方分发首选。其中 Tencent Agent Memory 架构特殊——通过 Memory Proxy 改客户端 base_url 实现零代码集成，明确声明"No plugin, hook, or MCP server is required"，因此无 MCP server 上架任何 MCP 目录，但仍提供 OpenClaw npm 插件。
+
+### 目录站收录偏好
+
+glama.ai（73K+ server）对记忆引擎友好度最高，设有 Knowledge & Memory 分类，收录了 Zep（官方）和 Supermemory（官方），但 OpenViking 仅有 5 个社区 server。mcp.so（18K+ server）收录 MemoryBear（官方）和 Zep（社区），但多数引擎未进入。两个目录站均未收录 Mem0，这与 Mem0 已自带全平台插件分发形成对比——当引擎自带 marketplace.json 时，对第三方目录站的依赖降低。
+
+### 展望
+
+记忆引擎在 Agent 平台的上架仍处于早期阶段：14 款引擎中仅 3 款（Zep、Mem0、OpenViking）在三大编码助手平台有官方插件，4 款完全缺席。随着 MCP 协议成为事实标准、官方 Registry 收录规模持续增长（已 6,359 个），预计未上架的学术与新锐引擎（TiMem、MemoryLake、硅基记忆）将逐步补齐 MCP server 适配。OpenClaw ClawHub 作为非 Anthropic 官方的 Skills 市场正在快速崛起（9,319 Stars），为不愿绑定单一厂商的引擎提供了中立分发渠道。
+
+> 本文调研数据截至 2026-08-17，各平台收录情况可能随时间变化。所有"未找到"均经平台搜索 API 或 sitemap 全量扫描核实，非推测。
+    `,
+  },
 }
 
 export default function InsightDetailPage({ params }: { params: Promise<{ slug: string }> }) {
