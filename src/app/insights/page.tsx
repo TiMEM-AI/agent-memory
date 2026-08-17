@@ -178,6 +178,15 @@ const insights = [
     date: '2026-07-23',
     featured: false,
   },
+  {
+    slug: 'memory-engine-overview',
+    title: '14 大记忆引擎全景纵览：从图谱到类脑，2026 选型一张图',
+    excerpt: 'Mem0、Zep、Letta、TiMem、MemoryBear、MemoryLake……14 款主流记忆引擎按出身、架构、定位逐个过一遍，附架构流派归类与选型建议，作为后续逐篇深度点评的开篇总览。',
+    category: '选型指南',
+    readTime: '14分钟',
+    date: '2026-08-17',
+    featured: false,
+  },
 ]
 
 const categories = ['全部', '架构分析', '深度评测', '选型指南', '技术解析', '评测基准', '行业动态']
