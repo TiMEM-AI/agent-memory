@@ -30,3 +30,10 @@ next-env.d.ts
 # logs
 dev-server.log
 *.log
+
+# 内部资料：不随站点入库（竞品截图/调研稿/评测底稿）
+/public/competitors/
+/docs/
+
+# out/ 不需要——静态导出在 CI 里生成
+/out/

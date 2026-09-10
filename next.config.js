@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
+const repo = 'agent-memory'
+
 const nextConfig = {
+  // GitHub Pages 静态导出（https://timem-ai.github.io/agent-memory/）
+  output: 'export',
+  basePath: `/${repo}`,
+  assetPrefix: `https://timem-ai.github.io/${repo}/`,
   images: {
     unoptimized: true,
   },
-  // 部署域名: agent-memory.cn
-  assetPrefix: undefined,
-  trailingSlash: false,
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
