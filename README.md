@@ -1,6 +1,8 @@
 # Agent Memory
 
-> LLM 记忆引擎评测平台 — agent-memory.cn
+> LLM 记忆引擎评测平台
+
+**在线站点：** [https://timem-ai.github.io/agent-memory/](https://timem-ai.github.io/agent-memory/)
 
 深度评测与对比 LLM 记忆引擎，帮助开发者为 AI 应用选择最适合的记忆解决方案。
 
@@ -47,7 +49,7 @@ npm install
 npm run dev
 ```
 
-访问 http://localhost:3000
+访问 http://localhost:3000/agent-memory （与线上一致，站点挂载在 `/agent-memory` 子路径下）
 
 ## 构建
 
@@ -75,9 +77,14 @@ src/
     engines.json          # 引擎数据 + 资源
 ```
 
-## 域名
+## 在线访问与部署
 
-[agent-memory.cn](https://agent-memory.cn)
+| 地址 | 说明 |
+|------|------|
+| https://timem-ai.github.io/agent-memory/ | GitHub Pages 部署地址（当前线上站点） |
+| agent-memory.cn | 自定义域名（当前 DNS 未解析） |
+
+站点托管在 GitHub Pages，由 GitHub Actions 自动部署：推送 `main` 分支即触发 [nextjs.yml](.github/workflows/nextjs.yml) 执行 `next build` 静态导出到 `out/` 并发布。
 
 ## License
 

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { BookOpen, Clock, ArrowRight, Tag } from 'lucide-react'
+import { BookOpen, Clock, Calendar, ArrowRight, Tag } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 
 const insights = [
@@ -212,12 +212,15 @@ const categories = ['全部', '架构分析', '深度评测', '选型指南', '�
 export default function InsightsPage() {
   const [selectedCategory, setSelectedCategory] = useState('全部')
 
+  // 按发布时间倒序，最新文章排在最前
+  const sortedInsights = [...insights].sort((a, b) => b.date.localeCompare(a.date))
+
   const filteredInsights =
     selectedCategory === '全部'
-      ? insights
-      : insights.filter((i) => i.category === selectedCategory)
+      ? sortedInsights
+      : sortedInsights.filter((i) => i.category === selectedCategory)
 
-  const featuredInsight = insights.find((i) => i.featured)
+  const featuredInsight = sortedInsights.find((i) => i.featured)
   const otherInsights = filteredInsights.filter((i) => !i.featured || selectedCategory !== '全部')
 
   return (
@@ -253,10 +256,15 @@ export default function InsightsPage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="grid md:grid-cols-2 gap-8 p-8">
                     <div className="relative z-10">
-                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-sm font-medium mb-4">
-                        <Tag className="w-3 h-3" />
-                        {featuredInsight.category}
-                      </span>
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-ink-deep text-white text-sm font-medium">
+                          精选
+                        </span>
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-sm font-medium">
+                          <Tag className="w-3 h-3" />
+                          {featuredInsight.category}
+                        </span>
+                      </div>
                       <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink-deep mb-4 group-hover:text-gold transition-colors">
                         {featuredInsight.title}
                       </h2>
@@ -302,6 +310,9 @@ export default function InsightsPage() {
                 {cat}
               </button>
             ))}
+            <span className="ml-auto self-center text-sm text-ink-light">
+              共 {filteredInsights.length} 篇 · 按发布时间倒序
+            </span>
           </motion.div>
 
           {/* Article Grid */}
@@ -337,9 +348,15 @@ export default function InsightsPage() {
 
                     {/* Meta */}
                     <div className="flex items-center justify-between pt-4 border-t border-ink-deep/5">
-                      <span className="flex items-center gap-1 text-xs text-ink-light">
-                        <Clock className="w-3 h-3" />
-                        {insight.readTime}
+                      <span className="flex items-center gap-3 text-xs text-ink-light">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {insight.readTime}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {insight.date}
+                        </span>
                       </span>
                       <span className="text-gold text-sm font-medium group-hover:gap-2 inline-flex items-center gap-1 transition-all">
                         阅读全文
