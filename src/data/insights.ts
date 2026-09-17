@@ -1103,4 +1103,159 @@ glama.ai（73K+ server）对记忆引擎友好度最高，设有 Knowledge & Mem
 > 本文调研数据截至 2026-08-17，各平台收录情况可能随时间变化。所有"未找到"均经平台搜索 API 或 sitemap 全量扫描核实，非推测。
     `,
   },
+  'docs-display-benchmark': {
+    title: '文档展示对标清单：14 家记忆引擎的文档站与官网对外展示实测',
+    excerpt: '逐个实抓 14 款记忆引擎的文档站与官网：文档入口形态、内容结构、上手步骤、可交互性、语言覆盖、llms.txt 与文档 MCP 的 Agent 可读性，以及首屏主张、基准公开度、客户背书与 CTA，附三档分档与自查清单。',
+    category: '行业动态',
+    readTime: '14分钟',
+    date: '2026-09-17',
+    content: `
+# 文档展示对标清单：14 家记忆引擎的文档站与官网对外展示实测
+
+> 调研日期：2026-09-17 ｜ 方法：逐个站点实抓核实，未抓到的一律标记「未核实」，不作推测
+
+## 为什么要专门对标「文档展示」
+
+开发者认识一个记忆引擎的路径通常是：搜到官网 → 扫一眼首屏主张 → 点进文档 → 复制第一段代码跑通。这三步里有两步发生在「文档展示」上，它直接决定了开发者是五分钟上手，还是当晚放弃。
+
+而记忆引擎这个品类在文档上分化极大：既有 Mem0、Zep、Supermemory 这种把文档当产品做的，也有全部内容躺在 GitHub README 里的，还有压根没有公开文档的。
+
+2026 年还给这件事加了一个新维度：**文档要能被 Agent 读**。llms.txt、文档 MCP server、\`.md\` 原文导出正在成为新的分水岭——当开发者的第一读者从人变成 Agent，文档的可机读性就直接等于曝光率。
+
+## 一、对标维度
+
+| 维度 | 看什么 |
+|------|--------|
+| 文档入口形态 | 独立文档域 / 官网内板块 / 云厂商文档中心 / 仅 GitHub README / 无公开文档 |
+| 内容结构 | 快速开始、核心概念、API 参考、示例 Cookbook、更新日志、版本化切换 |
+| 上手路径 | 从文档首页到第一段可跑代码的步骤数，以及是否要自建中间件 |
+| 可交互性 | 在线 Playground、免安装 Demo、本地工作台 |
+| 语言覆盖 | 英文 / 中文 / 中英双语 |
+| Agent 可读性 | llms.txt、文档 MCP server、\`.md\` 原文导出 |
+| 官网对外展示 | 首屏主张、基准数值是否公开、客户/生态背书、开源标识、CTA |
+| 维护活跃度 | 文档更新时间、Changelog 频率、是否与 SDK 同步 |
+
+## 二、文档入口与内容结构矩阵
+
+表例：✅ 具备 ｜ ⚠️ 部分具备或形态受限 ｜ ❌ 缺失 ｜ — 无公开文档
+
+| 引擎 | 文档入口形态 | 快速开始 | 核心概念 | API 参考 | 示例 Cookbook | 更新日志 | 语言 |
+|------|------------|---------|---------|---------|--------------|---------|------|
+| **Mem0** | 独立域 docs.mem0.ai（Mintlify） | ✅ | ✅ | ✅ | ✅ 30 篇 | ✅ 分 4 个 Tab | 仅英文 |
+| **MemGPT/Letta** | 独立域 docs.letta.com | ✅ | ✅ | ✅ | ✅ | ✅ | 仅英文 |
+| **MemoryOS** | 独立域 bai-lab.github.io/MemoryOS/docs | ✅ | ✅ | ✅ | ❌ | ❌ | 中英双语 |
+| **TiMem** | 独立域 docs.timem.cloud | ✅ | ✅ | ✅ | ❌ | ✅ | 中文为主 |
+| **MemoryBear** | 仅 GitHub README + 本地 Swagger | ✅ | ✅ | ⚠️ 仅本地 Swagger | ❌ | ✅ Releases | 中英双语 |
+| **MemoryLake** | 独立域 docs.memorylake.ai | ✅ | ✅ | ✅ | ⚠️ Minimal MVP Examples | ❌ 404 | 仅英文 |
+| **OmniMemory** | — 无公开文档入口 | — | — | — | — | — | 中文为主 |
+| **Zep** | 独立域 help.getzep.com | ✅ | ✅ | ✅ | ✅ | ✅ | 仅英文 |
+| **Supermemory** | 官网内板块 /docs | ✅ | ✅ | ✅ | ⚠️ SMFS 示例应用 | ❌ 独立页 | 仅英文 |
+| **MindMemOS** | 仅 README + 官网 SPA 内置 api-docs | ✅ | ⚠️ 无独立页 | ✅ FastAPI 生成 | ❌ | ❌ | 中英双语 |
+| **Tencent Agent Memory** | 云文档中心 1813 子目录 | ✅ | ✅ | ✅ | ⚠️ 内嵌示例 | ✅ API 更新历史 | 中文单语 |
+| **OpenViking** | 独立域 docs.openviking.ai | ✅ | ✅ | ✅ | ✅ | ❌ 独立页 | 中英双语 |
+| **ReMe** | 独立域 reme.agentscope.io | ✅ | ✅ | ✅ | ✅ | ❌ 独立页 | 中英双语 |
+| **硅基记忆** | — 仅官网营销页 | ❌ | ❌ | ❌ | ❌ | ❌ | 仅中文 |
+
+## 三、开发者友好度矩阵
+
+| 引擎 | Playground / 在线 Demo | llms.txt | 文档 MCP | 上手步骤 | 自托管中间件 |
+|------|----------------------|---------|---------|---------|------------|
+| **Mem0** | ⚠️ 文档内 Interactive Demo | ✅ | ✅ mcp.mem0.ai | 4 步 | 托管免自建；OSS 需自配向量库 |
+| **MemGPT/Letta** | ✅ chat.letta.com / leaderboard | ✅ | ❌ | 3 步 | 免自建 |
+| **MemoryOS** | ✅ 在线 Playground | 未核实 | ⚠️ 运行时 MCP | 4 步 | 免自建（默认本地文件） |
+| **TiMem** | ⚠️ 控制台 | 未核实 | ✅ TiMEM MCP | 3 步 | 云端免；自建需 docker-compose |
+| **MemoryBear** | ⚠️ 云控制台 | ❌ | ❌ | 6 步 | 必须自建 PostgreSQL + Neo4j + Redis + Elasticsearch |
+| **MemoryLake** | ✅ 产品内置 Playground | ✅ | 未核实 | 4 步 | 托管免自建 |
+| **OmniMemory** | ⚠️ Dashboard（需登录） | ❌ | 未核实 | 未核实 | 未核实 |
+| **Zep** | ⚠️ 评测 harness（需克隆运行） | ✅ | ✅ docs-mcp.getzep.com | 7 步 | Cloud 免自建；Graphiti 需图库 |
+| **Supermemory** | ✅ API 参考内嵌 playground | ✅ | ✅ 文档 MCP + CLI docs 子命令 | 5 步 | 云端免自建；可自托管单二进制 |
+| **MindMemOS** | ❌ | ❌ | ❌ | 云端 2 步 / 本地 5+ 步 | 云端免；本地需 Qdrant + Neo4j + Kafka |
+| **Tencent Agent Memory** | ❌（控制台 Memory Hub） | ⚠️ 仅站点级 | ❌ | 4 步 | 免自建（托管内置 VectorDB） |
+| **OpenViking** | ✅ 在线 Studio（免安装） | ✅ | 未核实 | 4 步 | 免自建（本地内置存储） |
+| **ReMe** | ✅ 本地 Studio 工作台 | ✅ | 未核实 | 4 步 | 免自建（默认 BM25 + wikilink） |
+| **硅基记忆** | ❌ | ❌ | ❌ | 无接入文档 | 未核实 |
+
+## 四、官网对外展示矩阵
+
+| 引擎 | 首屏主张 | 官网公开基准数值 | 客户/生态背书 | 开源标识 | 主要 CTA |
+|------|---------|----------------|--------------|---------|---------|
+| **Mem0** | AI memory that persists across sessions and agents | ⚠️ 仅文字提及并链去 research 页 | ✅ 客户 Logo 墙 + 15 万开发者 | 首页未展示 | Try Mem0 now |
+| **MemGPT/Letta** | building machines that learn（研究实验室定位） | ❌ | ✅ Bilt、11x 等案例 + 媒体 Logo | ❌ | npm i -g @letta-ai/letta-code |
+| **MemoryOS** | 为 AI Agent 提供记忆操作系统 | ✅ LoCoMo F1 +49.11% | ❌ | 未展示 | 查看 GitHub / Playground |
+| **TiMem** | 记忆穿越时间，智慧预见未来 | ⚠️ 数值只在 README | ❌ | 未展示 | 进入控制台 |
+| **MemoryBear** | 我们为您提供人工智能记忆服务 | ✅ 96.88% vs Mem0 66.88% vs OpenAI 52.90% | 未核实 | ✅ 6.3k Stars | 立即试用 |
+| **MemoryLake** | The memory lake for every AI. | ✅ LoCoMo 94.03%，自述全球第一并附复现仓库 | ✅ 8 家平台兼容字样墙 | ❌ | Get Your Unlimited Memory |
+| **OmniMemory** | 新一代智能记忆基座 | ✅ LoCoMo 93.50% + 50% Token 节省 | ✅ 8 所高校 Logo 墙 + 客户故事 | ❌ | 立即体验试用 |
+| **Zep** | Agent memory, at enterprise scale. | ✅ LoCoMo 94.7% / LongMemEval 90.2%（含延迟与上下文体积） | ✅ Trusted By 墙 + 客户证言 + S&P Global | 未展示 | Start Building / Book a Demo |
+| **Supermemory** | building the default engine for memory and continual learning | ✅ LongMemEval/LoCoMo/ConvoMem 第一 + 95% Recall@15 + arXiv 论文 | ✅ Works with 兼容墙 | ✅ README 29.6k Stars | Build with supermemory / Talk to sales |
+| **MindMemOS** | Every interaction becomes intelligence for the next. | ⚠️ 登录页无数值，README 公开 LoCoMo 94.03% | ❌ 仅飞书群二维码 | ✅ 985 Stars 引导 | Sign in |
+| **Tencent Agent Memory** | Agent 记忆服务 | ✅ PersonaMem 47.85%→76.10% + token 降 61.38% | 未核实 | ✅ 新闻稿称 90 天 2 万 Stars | 申请试用 |
+| **OpenViking** | Context Database for AI Agents. | ✅ LoCoMo 80%+ / tau2-bench +6.87pp / token 降 63% | ✅ ByteDance、Meituan 等 7 家 | ✅ 37.7K Stars | 打开安装文档 / Try Studio |
+| **ReMe** | Memory for AI agents. Files that remain yours. | ✅ LongMemEval 89.4% / BEAM 100K 66.1% | ❌ | ✅ 3.5K Stars | Quick Start |
+| **硅基记忆** | 记住你，越用越懂你 | ❌ 不公开 | ✅ 生态合作伙伴 7 张 Logo（未标名称） | ❌ | 了解产品 / 联系我们 |
+
+## 五、三档分档
+
+### 第一档：文档即产品（7 家）
+
+**Mem0、MemGPT/Letta、Zep、Supermemory、MemoryLake、OpenViking、ReMe**
+
+判据：文档入口成体系（独立域或官网一级板块）、快速开始到 API 参考齐备、至少具备 llms.txt 与可交互入口之一。
+
+- **Mem0**：30 篇 Cookbook 加 4 个 Tab 分列的 Changelog，文档更新到 v1.0.10（2026-04），是「文档即产品」的模板。
+- **Zep**：唯一同时做到 Changelog 近每日更新、条目带 sdk/graph/mcp 标签（等于和 SDK 版本同步）、且有版本化切换路径（/v3/）的一家。
+- **Supermemory**：Agent 可读性走得最远，llms.txt、每页 \`.md\`、文档 MCP 齐备，还把文档做成了 CLI 子命令 \`npx supermemory docs\`。
+- **OpenViking**：三家中唯一提供免安装在线 Studio，中英双语文档加 37.7K Stars，文档与工程深度都到位。
+- **ReMe**：中英双语文档站加 llms.txt，quick_start 页脚直接标「Last updated: 9/7/26」。
+
+### 第二档：内容齐、形态受限（4 家）
+
+**MemoryOS、TiMem、Tencent Agent Memory、MindMemOS**
+
+- **MemoryOS**：内容模块齐全还有在线 Playground，但文档站挂在 GitHub Pages 子路径（根路径 404），缺 Changelog，Agent 可读性未核实。
+- **TiMem**：更新日志、MCP/SDK/Skill 接入文档都有，但原 timem.cloud 域名已停运，官网迁到 timem.ai 后文档仍在 docs.timem.cloud，域名割裂容易让人找错门。
+- **Tencent Agent Memory**：内容其实很扎实——V2/V3 双版本目录、API 更新历史已发布 17 次，但内容锁在云厂商文档中心里，且中文单语、无在线 Playground。
+- **MindMemOS**：API 参考是 FastAPI 自动生成的，内容不在独立域上；本地路径要起 Qdrant + Neo4j + Kafka，文档负担实质上转嫁给了部署。
+
+### 第三档：文档缺位（3 家）
+
+- **MemoryBear**：无独立文档站，图纸全在 README（含 Benchmarks 与 Papers）；API 参考只有本地自生成 Swagger；入手要起四类中间件、走六步。好处是 Releases 更新极勤（v0.4.4 → v0.4.5 相隔 5 天）。
+- **OmniMemory**：文档域、llms.txt、sitemap 全部抓取失败，官网首页没有任何文档或 API 链接，只在产品页放了「摄取 → 增强 → 检索」三步并指向需登录的 Dashboard。官网对外展示反而是强项——高校 Logo 墙、客户故事、LoCoMo 93.50% 都摆得出来，唯独文档这一环是空的。
+- **硅基记忆**：/docs、/changelog、/updates、llms.txt 全部 404，官网只有营销页，无安装步骤、无 API Key 流程、无基准数值，只有「咨询方案 / 联系我们」。它的产品页把「标准文档」列为硬件授权档的交付项，属于典型的商务交付而非开发者自助，所以这一档对它未必是缺陷。
+
+## 六、横向洞察
+
+**1. 独立文档域是第一条分水岭。** 14 家里 8 家有独立文档域，而第一档 7 家中除 Supermemory 外全部有。反之，入口形态最弱的几家（MemoryBear、MindMemOS、OmniMemory、硅基记忆）内容完整度也系统性下滑。文档域本身不决定内容质量，但它是团队有没有把文档当独立产品维护的信号。
+
+**2. Agent 可读性正在成为第二条分水岭。** llms.txt 明确可用的有 7 家（Mem0、Letta、MemoryLake、Zep、Supermemory、OpenViking、ReMe），腾讯只提供站点级全站索引、不含本文档专属条目。文档 MCP 更稀缺，仅 Mem0、Zep、Supermemory 三家。这一层已经出现明确分化，而且和「文档好不好用」的传统评价高度重合。
+
+**3. 语言覆盖的分化比想象中反常识。** 4 家英文系引擎（Mem0、Letta、Zep、Supermemory）全部只有英文文档，零中文。而国内团队 10 家里，反而是 5 家做出了中英双语（MemoryOS、MemoryBear、MindMemOS、OpenViking、ReMe）。换句话说，国产引擎的出海文档意识强于英文系引擎的中文化意识，而纯中文的那 4 家（TiMem、Tencent、OmniMemory、硅基记忆）基本都面向国内行业客户或硬件场景。
+
+**4. 官网基准数值的公开度分化明显。** 9 家在产品页直接亮数字，记忆引擎品类「亮榜」已成惯例。例外各有原因：Mem0 只在文字里提到并链去 research 页，Letta 完全不公开（研究实验室定位），MindMemOS 把数值锁在 README 里而官网是登录页，硅基记忆面向商务交付所以不公开。
+
+**5. 上手门槛差着一个量级。** 最快的是 Letta 与 TiMem 的 3 步，最重的是 MemoryBear 的 6 步且要自建 PostgreSQL、Neo4j、Redis、Elasticsearch 四类中间件。Zep 的 Cloud 路径免自建，但文档给的示例是 7 步（装 SDK → 取 Key → 初始化 → 建 user → 建 thread → 写消息 → 取上下文）。凡是把「托管免自建」写进文档首页的，上手都明显更顺；反之要起图库的（Graphiti、MindMemOS 本地模式）都在文档里额外增加了一层环境准备成本。
+
+**6. 维护节奏开始出现落差。** Zep 的 Changelog 做到近每日更新且带模块标签，MemoryBear 的 Releases 高频到每周；而 MemoryOS 的 README 新闻停在 2026-01、TiMem 仓库最后推送在 2026-05。文档与代码的同步性，正在成为区分「活着」和「挂着」的指标。
+
+## 七、给选型者的建议
+
+- **只想五分钟验证效果**：Letta（3 步）或 TiMem（3 步，中文，MCP 配置即接入）
+- **要成熟文档 + Agent 可读**：Mem0（Cookbook 最厚）、Zep（Changelog 最勤）、Supermemory（机读性最强）
+- **中文团队、要中英双语文档**：OpenViking、ReMe
+- **要免安装的在线试跑**：OpenViking Studio、MemoryOS Playground
+- **只认 README 也能接受**：MemoryBear，但先确认能起四类中间件
+- **文档不作为选型依据**：硅基记忆——它的交付路径是商务咨询而非开发者自助
+
+## 八、给引擎团队的文档自查清单
+
+1. **有没有独立文档域？** 官网导航第一层能不能点到 docs？文档站挂在 GitHub Pages 子路径还让根路径 404，等于把一半访客挡在门外。
+2. **从文档首页到第一段可跑代码，是否控制在 4 步以内？** 托管路径能不能做到零自建？需要起中间件的场景有没有给一键 docker-compose？
+3. **API 参考是否与 SDK 版本同步？有没有独立的 Changelog 页？** Zep 把 sdk/graph/mcp 做成 Changelog 标签，是成本最低的同步证明方式。
+4. **有没有 llms.txt 和每页 \`.md\` 原文导出？** Agent 已经是文档的新增第一读者，这一步不做，你在 Agent 眼里就是不存在的。
+5. **有没有免安装的在线 Demo？** Playground 把「要不要选你」的决策成本压到一次点击。
+6. **官网首屏是否公开可复现的基准数值？** 数字只藏在 README 里等于没公开——14 家里有 3 家栽在这一条上。
+
+> 本文全部字段于 2026-09-17 逐个站点实抓核实。抓取失败的字段已显式标记「未核实」，未以推测填充；各站点文档与官网可能随时间变化，引用数据请以站点现状为准。
+    `,
+  },
 }

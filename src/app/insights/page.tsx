@@ -196,6 +196,15 @@ const insights = [
     date: '2026-08-17',
     featured: false,
   },
+  {
+    slug: 'docs-display-benchmark',
+    title: '文档展示对标清单：14 家记忆引擎的文档站与官网对外展示实测',
+    excerpt: '逐个实抓 14 款记忆引擎的文档站与官网：文档入口形态、内容结构、上手步骤、可交互性、语言覆盖、llms.txt 与文档 MCP 的 Agent 可读性，以及首屏主张、基准公开度、客户背书与 CTA，附三档分档与自查清单。',
+    category: '行业动态',
+    readTime: '14分钟',
+    date: '2026-09-17',
+    featured: false,
+  },
 ]
 
 const categories = ['全部', '架构分析', '深度评测', '选型指南', '技术解析', '评测基准', '行业动态']

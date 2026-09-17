@@ -14,6 +14,7 @@ import {
   Shield,
   Sparkles,
   Clock,
+  BookOpen,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import RadarChart from '@/components/engine/RadarChart'
@@ -304,6 +305,86 @@ export default function EngineDetail({ params }: { params: Promise<{ name: strin
                       </a>
                     )}
                   </div>
+                </div>
+
+                {/* Docs Display */}
+                <div className="bg-white rounded-2xl p-6 shadow-card md:col-span-2">
+                  <h3 className="font-serif text-xl font-bold text-ink-deep mb-4 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-gold" />
+                    文档展示
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div>
+                        <span className="text-ink-light text-sm">文档入口</span>
+                        <p className="text-ink font-medium">{engine.docsInfo.entry}</p>
+                      </div>
+                      <div>
+                        <span className="text-ink-light text-sm">文档语言</span>
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          {engine.docsInfo.languages.map((lang) => (
+                            <span
+                              key={lang}
+                              className="px-2 py-1 bg-ink-deep/5 rounded text-sm text-ink"
+                            >
+                              {lang}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-ink-light text-sm">上手路径</span>
+                        <p className="text-ink text-sm">{engine.docsInfo.onboarding}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <span className="text-ink-light text-sm">文档结构</span>
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          {engine.docsInfo.structure.length > 0 ? (
+                            engine.docsInfo.structure.map((item) => (
+                              <span
+                                key={item}
+                                className="px-2 py-1 bg-ink-deep/5 rounded text-sm text-ink"
+                              >
+                                {item}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-ink-light text-sm">暂无公开文档结构</span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex gap-2">
+                          <span className="text-ink-light w-20 flex-shrink-0">在线体验</span>
+                          <span className="text-ink">{engine.docsInfo.playground}</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <span className="text-ink-light w-20 flex-shrink-0">llms.txt</span>
+                          <span className="text-ink">{engine.docsInfo.llmsTxt}</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <span className="text-ink-light w-20 flex-shrink-0">文档 MCP</span>
+                          <span className="text-ink">{engine.docsInfo.docsMcp}</span>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-ink-light text-sm">官网对外展示</span>
+                        <p className="text-ink-light text-sm">{engine.docsInfo.siteHighlight}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-ink-light text-xs mt-4 pt-4 border-t border-ink-deep/5">
+                    以上字段于 {engine.docsInfo.verifiedAt} 逐个站点实抓核实，完整对标见{' '}
+                    <Link
+                      href="/insights/docs-display-benchmark"
+                      className="text-gold hover:underline"
+                    >
+                      《文档展示对标清单：14 家记忆引擎的文档站与官网对外展示实测》
+                    </Link>
+                  </p>
                 </div>
               </div>
             )}

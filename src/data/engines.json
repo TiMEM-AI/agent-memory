@@ -32,6 +32,18 @@
         "docs": "https://docs.mem0.ai",
         "github": "https://github.com/mem0ai/mem0"
       },
+      "docsInfo": {
+        "entry": "独立文档域 docs.mem0.ai（Mintlify）",
+        "url": "https://docs.mem0.ai",
+        "languages": ["英文"],
+        "structure": ["快速开始", "核心概念", "API 参考", "30 篇 Cookbook", "更新日志（分 4 个 Tab）"],
+        "playground": "文档内 Interactive Demo（独立 Playground 未核实）",
+        "llmsTxt": "支持（含 llms-full.txt 与每页 .md）",
+        "docsMcp": "支持（mcp.mem0.ai）",
+        "onboarding": "4 步：注册取 Key → pip install mem0ai → 初始化 Client → add/search；托管版免自建",
+        "siteHighlight": "首屏主打跨会话持久记忆，客户 Logo 墙 + 15 万开发者背书；基准数值只在首页文字提及并链去 research 页",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "python",
         "code": "from mem0 import MemoryClient\n\nclient = MemoryClient(api_key=\"your-key\")\n\n# 添加记忆\nclient.add(\n    messages=[{\"role\": \"user\", \"content\": \"我正在学习Python\"}],\n    user_id=\"user_123\"\n)\n\n# 检索记忆\nresults = client.search(\n    query=\"用户在学习什么？\",\n    user_id=\"user_123\"\n)"
@@ -92,6 +104,18 @@
         "docs": "https://docs.letta.com",
         "github": "https://github.com/letta-ai/letta"
       },
+      "docsInfo": {
+        "entry": "独立文档域 docs.letta.com",
+        "url": "https://docs.letta.com",
+        "languages": ["英文"],
+        "structure": ["快速开始", "核心概念（Stateful Agents / MemFS）", "API 参考", "Examples", "更新日志"],
+        "playground": "Web 应用 chat.letta.com 与 leaderboard.letta.com",
+        "llmsTxt": "支持（URL 加 .md 或 /index.md 取原文）",
+        "docsMcp": "无（仅提供接入外部 MCP 的文档）",
+        "onboarding": "3 步：npm i -g @letta-ai/letta-code → /connect 连模型 → 直接对话；免自建",
+        "siteHighlight": "官网定位 AI 研究实验室，首页不展示基准数值；有 Bilt、11x 等客户案例与媒体 Logo，CTA 是一条 npm 命令",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "python",
         "code": "from letta_client import Letta\n\nclient = Letta(token=\"YOUR_TOKEN\")\n\n# 创建具状态 Agent（含记忆）\nagent = client.agents.create(\n    name=\"assistant\",\n    memory_blocks=[{\"label\": \"human\", \"value\": \"用户\"}]\n)\n\n# 对话（自动读写记忆）\nclient.agents.messages.create(\n    agent_id=agent.id,\n    messages=[{\"role\": \"user\", \"content\": \"记住我喜欢用 Python 编程\"}]\n)"
@@ -142,6 +166,18 @@
         "website": "https://bai-lab.github.io/MemoryOS",
         "docs": "https://bai-lab.github.io/MemoryOS/docs",
         "github": "https://github.com/BAI-LAB/MemoryOS"
+      },
+      "docsInfo": {
+        "entry": "独立文档站 bai-lab.github.io/MemoryOS/docs（根路径 404）",
+        "url": "https://bai-lab.github.io/MemoryOS/docs",
+        "languages": ["中文", "英文"],
+        "structure": ["Get Started", "配置说明", "API 参考", "How It Works", "在线 Playground"],
+        "playground": "在线 Playground（baijia.online/memoryos/playground）",
+        "llmsTxt": "未核实",
+        "docsMcp": "无文档 MCP（仅有运行时 MemoryOS-MCP）",
+        "onboarding": "4 步：pip install memoryos-pro → 填 OpenAI Key → 初始化 → add_memory；默认本地文件存储，免向量库",
+        "siteHighlight": "中文主页「为 AI Agent 提供记忆操作系统」，公开 LoCoMo 提升数字；无客户 Logo 墙，CTA 指向 GitHub 与在线 Playground",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -199,9 +235,21 @@
         "details": "完全开源，支持本地部署"
       },
       "links": {
-        "website": "https://timem.cloud",
-        "docs": "https://github.com/TiMEM-AI/timem#readme",
+        "website": "https://timem.ai",
+        "docs": "https://docs.timem.cloud/",
         "github": "https://github.com/TiMEM-AI/timem"
+      },
+      "docsInfo": {
+        "entry": "独立文档域 docs.timem.cloud（原官网 timem.cloud 已停运，官网现为 timem.ai）",
+        "url": "https://docs.timem.cloud/",
+        "languages": ["中文"],
+        "structure": ["快速入门", "核心概念（记忆层级 / 写入搜索删除 / 规则学习）", "API 参考", "MCP/SDK/Skill 接入", "更新日志"],
+        "playground": "控制台 console.timem.cloud",
+        "llmsTxt": "未核实",
+        "docsMcp": "支持（TiMEM MCP 为产品能力）",
+        "onboarding": "3 步：控制台取 API Key + User ID → 粘贴 MCP 配置 → create_memory/search_memories",
+        "siteHighlight": "首屏「记忆穿越时间，智慧预见未来」；LoCoMo 75.30% 等数值只在 GitHub README，官网首页未见；无客户 Logo 墙，CTA 进入控制台",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -263,6 +311,18 @@
         "docs": "https://github.com/SuanmoSuanyangTechnology/MemoryBear",
         "github": "https://github.com/SuanmoSuanyangTechnology/MemoryBear"
       },
+      "docsInfo": {
+        "entry": "仅 GitHub README（无独立文档站，API 参考为本地自生成 Swagger）",
+        "url": "https://github.com/SuanmoSuanyangTechnology/MemoryBear",
+        "languages": ["中文", "英文"],
+        "structure": ["Quick Start", "架构说明", "安装部署", "Benchmarks", "GitHub Releases 更新日志"],
+        "playground": "云控制台 cloud.memorybear.ai",
+        "llmsTxt": "无",
+        "docsMcp": "无",
+        "onboarding": "6 步：clone → 起 PostgreSQL/Neo4j/Redis/Elasticsearch → 配 .env → alembic 迁移 → docker-compose up → 调 /api/setup",
+        "siteHighlight": "首屏「我们为您提供人工智能记忆服务」，直接公开 96.88% vs Mem0 66.88% vs OpenAI 52.90% 对比数字，展示 6.3k GitHub Stars，CTA 立即试用",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "python",
         "code": "from memorybear import MemoryBear\n\n# 初始化记忆熊\nbear = MemoryBear(api_key=\"your-key\")\n\n# 添加多模态记忆\nbear.add(\n    user_id=\"user_123\",\n    content=\"我最近在学Rust，之前一直写Python\",\n    modality=\"text\"\n)\n\n# 语义检索\nresults = bear.search(\n    user_id=\"user_123\",\n    query=\"用户会什么编程语言？\"\n)"
@@ -321,8 +381,20 @@
       },
       "links": {
         "website": "https://memorylake.ai",
-        "docs": "https://memorylake.ai",
+        "docs": "https://docs.memorylake.ai",
         "github": ""
+      },
+      "docsInfo": {
+        "entry": "独立文档域 docs.memorylake.ai（官网另有 integrations 板块）",
+        "url": "https://docs.memorylake.ai",
+        "languages": ["英文"],
+        "structure": ["快速开始", "核心概念", "API 参考", "Minimal MVP Examples"],
+        "playground": "产品内置 Playground",
+        "llmsTxt": "支持（含 llms-full.txt 与每页 .md）",
+        "docsMcp": "未核实",
+        "onboarding": "4 步：注册 → 控制台试用 → 建 API Key → 接插件或调 API；托管服务免自建",
+        "siteHighlight": "首屏「The memory lake for every AI.」，公开 LoCoMo 94.03% 并自述全球第一、附复现仓库；展示 8 家平台兼容字样墙，CTA 获取无限记忆",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -387,6 +459,18 @@
         "docs": "https://www.omnimemory.ai",
         "github": ""
       },
+      "docsInfo": {
+        "entry": "未找到公开文档入口（文档域、llms.txt、sitemap 均不可达，官网首页无文档或 API 链接）",
+        "url": "https://www.omnimemory.ai",
+        "languages": ["中文"],
+        "structure": [],
+        "playground": "Dashboard 试用（需登录）",
+        "llmsTxt": "无",
+        "docsMcp": "未核实",
+        "onboarding": "官网仅列「摄取 → 增强 → 检索」三步并指向需登录的 Dashboard，代码路径未核实",
+        "siteHighlight": "首屏「新一代智能记忆基座」，公开 50% Token 节省 / 80% 证据留存 / ≤500ms 与 LoCoMo 93.50%；有 8 所高校 Logo 墙与客户故事，无开源标识",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "python",
         "code": "from omnimemory import OmniMemory\n\n# 初始化\nomni = OmniMemory(api_key=\"your-key\")\n\n# 摄入多模态记忆\nomni.ingest(\n    user_id=\"user_123\",\n    content=\"我最近在研究AI记忆系统\",\n    modality=\"text\"\n)\n\n# 检索\nresults = omni.retrieve(\n    user_id=\"user_123\",\n    query=\"用户在研究什么？\",\n    time_horizon=\"7d\"\n)"
@@ -448,8 +532,20 @@
       },
       "links": {
         "website": "https://www.getzep.com",
-        "docs": "https://www.getzep.com/docs",
+        "docs": "https://help.getzep.com",
         "github": "https://github.com/getzep/graphiti"
+      },
+      "docsInfo": {
+        "entry": "独立文档域 help.getzep.com（官网 /docs 路径 404）",
+        "url": "https://help.getzep.com",
+        "languages": ["英文"],
+        "structure": ["快速开始", "核心概念", "SDK 参考", "Cookbook", "更新日志", "版本化（/v3/ 路径）"],
+        "playground": "评测 harness（需克隆仓库运行）",
+        "llmsTxt": "支持（含 llms-full.txt）",
+        "docsMcp": "支持（docs-mcp.getzep.com + Memory MCP Server）",
+        "onboarding": "7 步：装 SDK → 取 Key → 初始化 client → 建 user → 建 thread → add_messages → get_user_context；Cloud 免自建，Graphiti 需自建图库",
+        "siteHighlight": "首屏「Agent memory, at enterprise scale.」，公开 LoCoMo 94.7% 与 LongMemEval 90.2%（含延迟与上下文体积）；有 Trusted By 客户墙、客户证言与 S&P Global 报告引用",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -535,6 +631,18 @@
         "docs": "https://supermemory.ai/docs",
         "github": "https://github.com/supermemoryai/supermemory"
       },
+      "docsInfo": {
+        "entry": "官网内板块 supermemory.ai/docs",
+        "url": "https://supermemory.ai/docs",
+        "languages": ["英文"],
+        "structure": ["快速开始", "核心概念", "API 参考（含 playground）", "SMFS 示例应用"],
+        "playground": "API 参考页内嵌 playground",
+        "llmsTxt": "支持（含每页 .md 原文）",
+        "docsMcp": "支持（文档 MCP + CLI 的 docs 子命令）",
+        "onboarding": "5 步：控制台取 Key → 写入会话 → 写入文档 → 轮询状态 → 三种检索；云端托管免自建，也可自托管单二进制",
+        "siteHighlight": "首屏自称做 Agent 的默认记忆引擎，公开 LongMemEval/LoCoMo/ConvoMem 第一与 95% Recall@15；Works with 兼容墙，README 标注 29.6k Stars",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "typescript",
         "code": "import { Supermemory } from \"supermemory\";\n\nconst sm = new Supermemory();\n\n// 存储记忆\nawait sm.memories.create({\n  content: \"我正在研究AI记忆系统\",\n  userId: \"user_123\"\n});\n\n// 检索\nconst results = await sm.memories.search({\n  q: \"用户在研究什么？\",\n  userId: \"user_123\"\n});"
@@ -600,6 +708,18 @@
         "docs": "https://github.com/mindscale-noah/MindMemOS",
         "github": "https://github.com/mindscale-noah/MindMemOS"
       },
+      "docsInfo": {
+        "entry": "仅 GitHub README + 官网 SPA 内置 API 文档（仓库另有部署与 CLI 说明）",
+        "url": "https://github.com/mindscale-noah/MindMemOS",
+        "languages": ["中文", "英文"],
+        "structure": ["README 快速开始", "特性与架构描述", "FastAPI 生成 API 文档", "News 时间线"],
+        "playground": "无",
+        "llmsTxt": "无",
+        "docsMcp": "无文档 MCP（提供 mindmemos-cli 的 Agent skill）",
+        "onboarding": "云端 2 步：申请 Key → curl 调用；本地 5+ 步：配 3 个 model router → 配 api_keys → make dev（起 Qdrant + Neo4j + Kafka）→ curl",
+        "siteHighlight": "首屏「Every interaction becomes intelligence for the next.」；官网为登录页、无基准数值，LoCoMo 94.03%、PersonaMem 70.63% 等锁在 README，无客户 Logo 墙，仅 985 Stars 引导",
+        "verifiedAt": "2026-09-17"
+      },
       "codeExample": {
         "language": "python",
         "code": "# pip install mindmemos\nfrom mindmemos import MindMemOS\n\n# 初始化记忆操作系统（可插拔给任意 Agent）\nmemory_os = MindMemOS(\n    memory_bank_path=\"./memory_bank\",\n    agent_id=\"my_agent\"\n)\n\n# 写入对话记忆\nmemory_os.add(\n    user_id=\"user_123\",\n    content=\"我正在用 Python 做推荐系统\"\n)\n\n# 让记忆自行巩固并沉淀为技能\nmemory_os.dream()\n\n# 检索跨 Agent 可迁移记忆\nresults = memory_os.search(query=\"用户的研究方向？\")"
@@ -657,8 +777,20 @@
       },
       "links": {
         "website": "https://cloud.tencent.com/product/agm",
-        "docs": "https://cloud.tencent.com/developer/article/2668579",
+        "docs": "https://cloud.tencent.com/document/product/1813/123053",
         "github": "https://github.com/TencentCloud/tencentdb-agent-memory"
+      },
+      "docsInfo": {
+        "entry": "云厂商文档中心子页（云数据库 AI 服务 › Memory 应用指南）",
+        "url": "https://cloud.tencent.com/document/product/1813/123053",
+        "languages": ["中文"],
+        "structure": ["快速开始", "概念与四层架构", "API 参考（V3 API / Python SDK / HTTP）", "API 更新历史", "V2/V3 版本化目录"],
+        "playground": "无（控制台提供 Memory Hub 可视化）",
+        "llmsTxt": "仅站点级（全站产品索引，非本文档专属）",
+        "docsMcp": "无",
+        "onboarding": "4 步：实名注册 → 控制台新建 Memory 实例 → 取 API Key + service_id → 调 /v3/conversation/add；向量库由托管实例内置，无需单独购买",
+        "siteHighlight": "产品页「Agent 记忆服务」，公开 PersonaMem 47.85%→76.10% 与 OpenClaw 场景 token 降 61.38%；新闻稿称开源 90 天获 2 万 Stars，CTA 申请试用",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -723,9 +855,21 @@
         "details": "Apache-2.0 开源，可自托管；LoCoMo 等基准已公开评测报告"
       },
       "links": {
-        "website": "https://github.com/volcengine/OpenViking",
-        "docs": "https://github.com/volcengine/OpenViking",
+        "website": "https://openviking.ai",
+        "docs": "https://docs.openviking.ai",
         "github": "https://github.com/volcengine/OpenViking"
+      },
+      "docsInfo": {
+        "entry": "独立文档域 docs.openviking.ai（另有官网与 blog 子域）",
+        "url": "https://docs.openviking.ai",
+        "languages": ["中文", "英文"],
+        "structure": ["快速开始", "架构与上下文类型/层级/检索", "API 参考（Python/Go/TS SDK）", "examples 示例", "GitHub Releases"],
+        "playground": "在线 Studio（免安装）",
+        "llmsTxt": "支持（中英全页索引）",
+        "docsMcp": "未核实",
+        "onboarding": "4 步：pip install openviking → server init/doctor/start → 配 VLM + Embedding → ov add-resource 与 ov find；本地内置存储免自建",
+        "siteHighlight": "首屏「Context Database for AI Agents.」，公开 LoCoMo 80%+ 与 tau2-bench 提升、token 降幅；展示 ByteDance、Meituan 等 7 家背书与 37.7K Stars，CTA 打开安装文档或 Try Studio",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -791,8 +935,20 @@
       },
       "links": {
         "website": "https://github.com/modelscope/agentscope",
-        "docs": "https://github.com/modelscope/agentscope/tree/main/src/agentscope/memory",
+        "docs": "https://reme.agentscope.io/",
         "github": "https://github.com/modelscope/agentscope"
+      },
+      "docsInfo": {
+        "entry": "独立文档域 reme.agentscope.io（/en 与 /zh 双语）",
+        "url": "https://reme.agentscope.io/",
+        "languages": ["中文", "英文"],
+        "structure": ["快速开始", "核心概念（memory_as_file / framework / dream）", "CLI 与 Jobs 参考", "基准复现与宿主集成示例"],
+        "playground": "本地 Studio 工作台",
+        "llmsTxt": "支持（中英全页索引）",
+        "docsMcp": "未核实",
+        "onboarding": "4 步：pip install reme-ai[core] → 写 .env → reme start → 5 分钟 write/search/read demo；默认 BM25 + wikilink，免向量库",
+        "siteHighlight": "首屏「Memory for AI agents. Files that remain yours.」，公开 LongMemEval 89.4%、BEAM 与 π-Bench 成绩；无客户墙，标注 3.5K+ Stars，CTA 指向 Quick Start",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",
@@ -860,6 +1016,18 @@
         "website": "https://seemem.com",
         "docs": "https://seemem.com",
         "github": ""
+      },
+      "docsInfo": {
+        "entry": "无公开文档（/docs、/changelog、/updates、llms.txt 均 404，仅官网营销页）",
+        "url": "https://seemem.com",
+        "languages": ["中文"],
+        "structure": [],
+        "playground": "无",
+        "llmsTxt": "无",
+        "docsMcp": "无",
+        "onboarding": "无安装与接入步骤文档，官网仅提供咨询方案与联系方式",
+        "siteHighlight": "首屏「记住你，越用越懂你」，不公开任何基准数值；有 7 张未标注名称的生态合作伙伴 Logo，无开源标识，CTA 为联系我们",
+        "verifiedAt": "2026-09-17"
       },
       "codeExample": {
         "language": "python",

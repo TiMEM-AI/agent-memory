@@ -1,12 +1,160 @@
 'use client'
 
-import { use, useEffect, useState } from 'react'
+import { use, useEffect, useState, type ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, Clock, Calendar, BookOpen } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 
 import { insightsData } from '@/data/insights'
+
+function renderInline(text: string): ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*|`[^`]+`)/).map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={i} className="font-semibold text-ink-deep">
+          {part.slice(2, -2)}
+        </strong>
+      )
+    }
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return (
+        <code key={i} className="px-1.5 py-0.5 bg-ink-deep/5 rounded text-sm font-mono text-gold">
+          {part.slice(1, -1)}
+        </code>
+      )
+    }
+    return part
+  })
+}
+
+function renderContent(content: string): ReactNode[] {
+  const lines = content.split('\n')
+  const nodes: ReactNode[] = []
+  let i = 0
+
+  while (i < lines.length) {
+    const line = lines[i]
+
+    // Markdown 表格块
+    if (line.trim().startsWith('|')) {
+      const block: string[] = []
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        block.push(lines[i])
+        i++
+      }
+      const rows = block
+        .map((l) => l.trim().replace(/^\|/, '').replace(/\|$/, ''))
+        .filter((l) => !/^[\s:|-]+$/.test(l))
+        .map((l) => l.split('|').map((cell) => cell.trim()))
+      const [header = [], ...body] = rows
+      nodes.push(
+        <div key={nodes.length} className="overflow-x-auto my-6">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="bg-ink-deep/5">
+                {header.map((cell, c) => (
+                  <th
+                    key={c}
+                    className="px-3 py-2 text-left font-semibold text-ink-deep border-b border-ink-deep/10 whitespace-nowrap"
+                  >
+                    {renderInline(cell)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row, r) => (
+                <tr key={r} className="border-b border-ink-deep/5">
+                  {row.map((cell, c) => (
+                    <td key={c} className="px-3 py-2 text-ink align-top">
+                      {renderInline(cell)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+      continue
+    }
+
+    if (line.startsWith('```')) {
+      i++
+      continue
+    }
+
+    if (line.startsWith('### ')) {
+      nodes.push(
+        <h3 key={nodes.length} className="font-serif text-xl font-bold text-ink-deep mt-6 mb-3">
+          {line.replace('### ', '')}
+        </h3>
+      )
+      i++
+      continue
+    }
+    if (line.startsWith('## ')) {
+      nodes.push(
+        <h2 key={nodes.length} className="font-serif text-2xl font-bold text-ink-deep mt-8 mb-4">
+          {line.replace('## ', '')}
+        </h2>
+      )
+      i++
+      continue
+    }
+    if (line.startsWith('# ')) {
+      nodes.push(
+        <h1 key={nodes.length} className="font-serif text-3xl font-bold text-ink-deep mt-8 mb-4">
+          {line.replace('# ', '')}
+        </h1>
+      )
+      i++
+      continue
+    }
+
+    if (line.startsWith('> ')) {
+      nodes.push(
+        <blockquote key={nodes.length} className="border-l-4 border-gold/40 pl-4 my-4 text-ink-light">
+          {renderInline(line.slice(2))}
+        </blockquote>
+      )
+      i++
+      continue
+    }
+
+    if (line.startsWith('- ')) {
+      const items: string[] = []
+      while (i < lines.length && lines[i].startsWith('- ')) {
+        items.push(lines[i].slice(2))
+        i++
+      }
+      nodes.push(
+        <ul key={nodes.length} className="list-disc pl-6 mb-4 space-y-1">
+          {items.map((item, n) => (
+            <li key={n}>{renderInline(item)}</li>
+          ))}
+        </ul>
+      )
+      continue
+    }
+
+    if (line.trim() === '') {
+      nodes.push(<div key={nodes.length} className="h-4" />)
+      i++
+      continue
+    }
+
+    nodes.push(
+      <p key={nodes.length} className="mb-4">
+        {renderInline(line)}
+      </p>
+    )
+    i++
+  }
+
+  return nodes
+}
 
 export default function InsightDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = use(params)
@@ -92,49 +240,7 @@ export default function InsightDetail({ params }: { params: Promise<{ slug: stri
             className="bg-white rounded-2xl p-8 shadow-card prose prose-lg max-w-none"
           >
             <div className="text-ink leading-relaxed">
-              {insight.content.split('\n').map((paragraph, i) => {
-                if (paragraph.startsWith('# ')) {
-                  return (
-                    <h1 key={i} className="font-serif text-3xl font-bold text-ink-deep mt-8 mb-4">
-                      {paragraph.replace('# ', '')}
-                    </h1>
-                  )
-                }
-                if (paragraph.startsWith('## ')) {
-                  return (
-                    <h2 key={i} className="font-serif text-2xl font-bold text-ink-deep mt-8 mb-4">
-                      {paragraph.replace('## ', '')}
-                    </h2>
-                  )
-                }
-                if (paragraph.startsWith('### ')) {
-                  return (
-                    <h3 key={i} className="font-serif text-xl font-bold text-ink-deep mt-6 mb-3">
-                      {paragraph.replace('### ', '')}
-                    </h3>
-                  )
-                }
-                if (paragraph.startsWith('```')) {
-                  return null
-                }
-                if (paragraph.trim() === '') {
-                  return <div key={i} className="h-4" />
-                }
-                // Handle inline code
-                if (paragraph.includes('`') && !paragraph.startsWith('-') && !paragraph.startsWith('*')) {
-                  return (
-                    <p key={i} className="mb-4">
-                      {paragraph.split(/(`[^`]+`)/).map((part, j) => {
-                        if (part.startsWith('`') && part.endsWith('`')) {
-                          return <code key={j} className="px-1.5 py-0.5 bg-ink-deep/5 rounded text-sm font-mono text-gold">{part.slice(1, -1)}</code>
-                        }
-                        return part
-                      })}
-                    </p>
-                  )
-                }
-                return <p key={i} className="mb-4">{paragraph}</p>
-              })}
+              {renderContent(insight.content)}
             </div>
           </motion.div>
 
