@@ -8,20 +8,58 @@ import Navbar from '@/components/layout/Navbar'
 
 import { insightsData } from '@/data/insights'
 
+const INLINE_PATTERN =
+  /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`|\[[^\]\n]+\]\([^)\n]+\)|https?:\/\/[^\s，。、；：）】"'<]+)/
+
 function renderInline(text: string): ReactNode[] {
-  return text.split(/(\*\*[^*]+\*\*|`[^`]+`)/).map((part, i) => {
-    if (part.startsWith('**') && part.endsWith('**')) {
+  return text.split(INLINE_PATTERN).map((part, i) => {
+    if (!part) return null
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
       return (
         <strong key={i} className="font-semibold text-ink-deep">
           {part.slice(2, -2)}
         </strong>
       )
     }
-    if (part.startsWith('`') && part.endsWith('`')) {
+    if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
       return (
         <code key={i} className="px-1.5 py-0.5 bg-ink-deep/5 rounded text-sm font-mono text-gold">
           {part.slice(1, -1)}
         </code>
+      )
+    }
+    const mdLink = part.match(/^\[([^\]\n]+)\]\(([^)\n]+)\)$/)
+    if (mdLink) {
+      return (
+        <a
+          key={i}
+          href={mdLink[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gold hover:underline break-all"
+        >
+          {mdLink[1]}
+        </a>
+      )
+    }
+    if (/^https?:\/\//.test(part)) {
+      return (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gold hover:underline break-all"
+        >
+          {part}
+        </a>
+      )
+    }
+    if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+      return (
+        <em key={i} className="italic">
+          {part.slice(1, -1)}
+        </em>
       )
     }
     return part
@@ -135,6 +173,22 @@ function renderContent(content: string): ReactNode[] {
             <li key={n}>{renderInline(item)}</li>
           ))}
         </ul>
+      )
+      continue
+    }
+
+    if (/^\d+\.\s/.test(line)) {
+      const items: string[] = []
+      while (i < lines.length && /^\d+\.\s/.test(lines[i])) {
+        items.push(lines[i].replace(/^\d+\.\s/, ''))
+        i++
+      }
+      nodes.push(
+        <ol key={nodes.length} className="list-decimal pl-6 mb-4 space-y-1">
+          {items.map((item, n) => (
+            <li key={n}>{renderInline(item)}</li>
+          ))}
+        </ol>
       )
       continue
     }

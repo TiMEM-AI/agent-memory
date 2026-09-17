@@ -5,14 +5,14 @@
       "name": "Mem0",
       "org": "Mem0 Team (YC Alumni)",
       "orgType": "company",
-      "tagline": "图记忆 + 知识图谱，为生产环境而生的记忆层",
+      "tagline": "多信号融合检索 + 可选知识图谱的生产级记忆层",
       "logo": "M",
       "color": "#6366f1",
       "architecture": {
-        "type": "graph",
+        "type": "hybrid",
         "memoryLevels": ["用户记忆", "会话记忆", "Agent 状态记忆"],
         "selfManaged": false,
-        "description": "将对话信息自动提取为实体-关系三元组构建持续演化的知识图谱。2026 年 4 月推出新一代记忆算法：单遍 ADD-only 提取、Agent 生成事实作为一等公民、实体链接、多信号检索（语义+BM25+实体）与时间推理"
+        "description": "以多信号融合检索（语义向量 + BM25 + 实体匹配）叠加时间推理为核心，知识图谱为可选增强模块而非必备底座。2026 年 4 月推出新一代记忆算法：单遍 ADD-only 提取、Agent 生成事实作为一等公民、实体链接、多信号检索（语义+BM25+实体）与时间推理"
       },
       "metrics": {
         "latency": 92,
@@ -138,7 +138,7 @@
     {
       "id": "memos",
       "name": "MemoryOS",
-      "org": "北京邮电大学 BaiJia AI (白婷团队)",
+      "org": "北京邮电大学 & 腾讯 AI Lab (BaiJia AI)",
       "orgType": "academic",
       "tagline": "多层记忆系统，短中长记忆自动分层，面向个性化 Agent",
       "logo": "MO",
@@ -188,7 +188,7 @@
         "notRecommended": ["实时性要求极高且无分层必要场景"]
       },
       "highlights": [
-        "EMNLP 2025 Oral，LoCoMo 长时记忆 F1 +49.11% / BLEU-1 +46.18%",
+        "EMNLP 2025 主会论文（ACL Anthology），LoCoMo 长时记忆 F1 提升 48.36%（终稿口径）",
         "操作系统式内存管理：段页式 + FIFO + 热度淘汰",
         "存储/更新/检索策略可插拔",
         "提供 MemoryOS-MCP 与 Chromadb 向量版，1.6K+ Stars"
@@ -199,7 +199,7 @@
       ],
       "resources": [
         {
-          "title": "MemoryOS GitHub — [EMNLP 2025 Oral] 面向个性化 AI 智能体的记忆操作系统",
+          "title": "MemoryOS GitHub — [EMNLP 2025] 面向个性化 AI 智能体的记忆操作系统",
           "type": "github",
           "date": "2025-08-21",
           "url": "https://github.com/BAI-LAB/MemoryOS",
@@ -210,7 +210,7 @@
     {
       "id": "timem",
       "name": "TiMem",
-      "org": "中科院自动化所 (智悦云创 / 创始人余宣庆)",
+      "org": "中国科学院自动化研究所 & 中国科学院大学",
       "orgType": "academic",
       "tagline": "时间层级记忆，像人脑一样逐层抽象",
       "logo": "TM",
@@ -275,7 +275,7 @@
           "type": "article",
           "date": "2026-02-10",
           "url": "https://blog.csdn.net/qq_40302568/article/details/157939024",
-          "description": "中科院自动化所余宣庆团队提出 TiMem（Temporal-Hierarchical Memory Consolidation），5 层时间层级记忆，LoCoMo 75.30%、LongMemEval-S 76.88%，token 消耗降低 52.2%"
+          "description": "中国科学院自动化研究所与中国科学院大学团队提出 TiMem（Temporal-Hierarchical Memory Consolidation），5 层时间层级记忆，LoCoMo 75.30%、LongMemEval-S 76.88%，token 消耗降低 52.2%"
         }
       ]
     },
@@ -320,7 +320,7 @@
         "llmsTxt": "无",
         "docsMcp": "无",
         "onboarding": "6 步：clone → 起 PostgreSQL/Neo4j/Redis/Elasticsearch → 配 .env → alembic 迁移 → docker-compose up → 调 /api/setup",
-        "siteHighlight": "首屏「我们为您提供人工智能记忆服务」，直接公开 96.88% vs Mem0 66.88% vs OpenAI 52.90% 对比数字，展示 6.3k GitHub Stars，CTA 立即试用",
+        "siteHighlight": "首屏「我们为您提供人工智能记忆服务」，公开论文自报 LongMemEval 95% / LoCoMo 91.54% 成绩，展示 6.3k GitHub Stars，CTA 立即试用",
         "verifiedAt": "2026-09-17"
       },
       "codeExample": {
@@ -332,11 +332,11 @@
         "notRecommended": ["纯学术研究"]
       },
       "highlights": [
-        "回忆准确率 96.88%（高于 OpenAI 52.90%、Mem0 66.88%）",
-        "Token 消耗减少 90%，多模态感知准确率 97%",
+        "论文自报 LongMemEval 95%、LoCoMo 91.54%",
+        "论文自报 token 与成本减少约 90%，多模态感知准确率 97%",
         "情感计算识别 8 种核心情绪",
         "动态图重构技术，非冗余存储",
-        "2026-07 红熊 AI 发布会登顶 LoCoMo 与 LongMemEval 记忆双榜"
+        "2026-07 红熊 AI 发布会公布论文自报成绩"
       ],
       "limitations": [
         "商业化产品，开源程度有限",
@@ -348,7 +348,7 @@
           "type": "news",
           "date": "2026-07-31",
           "url": "https://tech.ifeng.com/c/8vCcxu7Ytup",
-          "description": "红熊 AI 在 2026 产品发布会展示「记忆科学」全栈生态，底层 MemoryBear 类脑记忆引擎登顶 LoCoMo 与 LongMemEval 双榜"
+          "description": "红熊 AI 在 2026 产品发布会展示「记忆科学」全栈生态，报道称底层 MemoryBear 类脑记忆引擎登顶 LoCoMo 与 LongMemEval 双榜"
         }
       ]
     },
@@ -364,7 +364,7 @@
         "type": "hybrid",
         "memoryLevels": ["背景记忆", "事实记忆", "事件记忆", "对话记忆", "反思记忆", "技能记忆"],
         "selfManaged": false,
-        "description": "多模态记忆基础设施，支持对话、文档、表格、音频、视频统一管理。三方加密架构，平台方无法读取用户记忆"
+        "description": "多模态记忆基础设施，支持对话、文档、表格、音频、视频统一管理。加密架构（厂商称平台方无法读取用户记忆）"
       },
       "metrics": {
         "latency": 96,
@@ -405,9 +405,9 @@
         "notRecommended": ["无需记忆的一次性问答"]
       },
       "highlights": [
-        "LoCoMo 基准测试全球第一 94.03%",
+        "官网博客自报 LoCoMo 94.03%",
         "支持 6 种记忆类型（背景/事实/事件/对话/反思/技能）",
-        "三方加密，平台架构上无法读取用户记忆",
+        "加密架构，厂商称平台方无法读取用户记忆",
         "数据规模扩展 10,000 倍，Token 成本降低 90%+",
         "类 Git 记忆版本管理 + 冲突检测 + 完整审计追踪",
         "内置开放数据集（4000万+论文、SEC文件、临床试验等）",
@@ -423,14 +423,14 @@
           "type": "news",
           "date": "2026-02-09",
           "url": "https://www.leiphone.com/category/ai/tQF0ahbkW8nRkVqN.html",
-          "description": "质变科技发布 MemoryLake，由 MemoryLake-D1 大模型、MemoryLake 记忆引擎、Relyt 多模态存储与计算平台三大组件构成，LoCoMo 基准全球第一（94%）"
+          "description": "质变科技发布 MemoryLake，由 MemoryLake-D1 大模型、MemoryLake 记忆引擎、Relyt 多模态存储与计算平台三大组件构成，官网博客自报 LoCoMo 94.03%"
         }
       ]
     },
     {
       "id": "omnimemory",
       "name": "OmniMemory",
-      "org": "OmniMemory AI",
+      "org": "丘脑智能",
       "orgType": "company",
       "tagline": "下一代智能记忆基础架构，多模态记忆+深度用户画像",
       "logo": "OM",
@@ -468,7 +468,7 @@
         "llmsTxt": "无",
         "docsMcp": "未核实",
         "onboarding": "官网仅列「摄取 → 增强 → 检索」三步并指向需登录的 Dashboard，代码路径未核实",
-        "siteHighlight": "首屏「新一代智能记忆基座」，公开 50% Token 节省 / 80% 证据留存 / ≤500ms 与 LoCoMo 93.50%；有 8 所高校 Logo 墙与客户故事，无开源标识",
+        "siteHighlight": "首屏「新一代智能记忆基座」，公开 50% Token 节省 / 80% 证据留存 / ≤500ms 与 LoCoMo 82.5%（官方口径）；有 8 所高校 Logo 墙与客户故事，无开源标识",
         "verifiedAt": "2026-09-17"
       },
       "codeExample": {
@@ -480,7 +480,7 @@
         "notRecommended": ["纯文档检索"]
       },
       "highlights": [
-        "LoCoMo 基准 93.50%（高于 MemOS 75.80%）",
+        "LoCoMo 82.5%（官方口径）",
         "Token 节省最高 50%",
         "原始证据保留 80%",
         "检索延迟 ≤500ms",
@@ -653,7 +653,7 @@
       },
       "highlights": [
         "LongMemEval/LoCoMo/ConvoMem 基准全部 SOTA",
-        "检索延迟 <300ms，比 Zep 快 10×，比 Mem0 快 25×",
+        "检索延迟 <300ms，比 Zep 快 10×，比 Mem0 快 25×（厂商自报）",
         "统一图谱：记忆+RAG+画像在同一结构中",
         "支持 Connectors（Slack/Notion/Drive/GitHub/Gmail/S3）",
         "文件系统挂载：grep 变成语义搜索",
@@ -701,7 +701,7 @@
         "freeTier": true,
         "startingPrice": 0,
         "model": "open-source",
-        "details": "MIT 协议完全开源，支持本地部署；官网 mindmemos.cn"
+        "details": "开源（许可证以仓库为准），支持本地部署；官网 mindmemos.cn"
       },
       "links": {
         "website": "https://mindmemos.cn",
@@ -729,10 +729,10 @@
         "notRecommended": ["轻量级一次性问答", "无本地部署资源场景"]
       },
       "highlights": [
-        "LoCoMo 94.03 分，PersonaMem 70.63%",
+        "论文（arXiv 2608.12428）自报 LoCoMo 94.03%，PersonaMem 70.63%",
         "Dreaming 压缩 19.4%-23.5% 活跃记忆",
         "记忆与技能协同自演进",
-        "MIT 开源，记忆可随 Agent 带走"
+        "开源（许可证以仓库为准），记忆可随 Agent 带走"
       ],
       "limitations": [
         "较新项目，生态待完善",
@@ -839,7 +839,7 @@
         "type": "hierarchical",
         "memoryLevels": ["L0 原始上下文", "L1 会话摘要", "L2 长期记忆"],
         "selfManaged": true,
-        "description": "采用文件系统范式（viking:// 协议）统一管理记忆、资源与技能，通过 L0/L1/L2 三层按需加载，将长上下文压缩为结构化文件。337K 行代码、Python+Rust+Go+C++ 四语言架构，AGPL-3.0 / Apache-2.0 开源"
+        "description": "采用文件系统范式（viking:// 协议）统一管理记忆、资源与技能，通过 L0/L1/L2 三层按需加载，将长上下文压缩为结构化文件。Python+Rust+Go+C++ 四语言架构，主体 AGPL-3.0（ov_cli 与 examples 为 Apache-2.0）开源"
       },
       "metrics": {
         "latency": 91,
@@ -880,10 +880,10 @@
         "notRecommended": ["简单键值记忆场景", "不愿自托管团队"]
       },
       "highlights": [
-        "L0/L1/L2 三层摘要，实测降低 80-91% token 消耗",
+        "L0/L1/L2 三层摘要，官方实测在不同场景下降约 34%–90% token 消耗",
         "viking:// 文件系统范式，记忆可读可改可迁移",
         "LoCoMo / tau2-bench 已评测",
-        "337K 行代码，Python+Rust+Go+C++ 工程深度"
+        "Python+Rust+Go+C++ 多语言工程实现"
       ],
       "limitations": [
         "需自托管，运维成本较高",
@@ -895,7 +895,7 @@
           "type": "article",
           "date": "2026-06-10",
           "url": "https://cloud.tencent.com/developer/article/2686121",
-          "description": "字节跳动火山引擎推出 OpenViking，用文件系统范式（viking:// 协议）统一管理记忆、资源和技能，L0/L1/L2 三层按需加载，实测降低 80-91% token 消耗"
+          "description": "字节跳动火山引擎推出 OpenViking，用文件系统范式（viking:// 协议）统一管理记忆、资源和技能，L0/L1/L2 三层按需加载，官方实测在不同场景下降约 34%–90% token 消耗"
         },
         {
           "title": "OpenViking 官方文档：Self-evolving Context Database for Agents",
@@ -909,7 +909,7 @@
     {
       "id": "reme",
       "name": "ReMe",
-      "org": "上海交通大学 & 阿里通义 (AgentScope Team)",
+      "org": "上海交通大学 & 阿里通义实验室 (Tongyi Lab, Alibaba Group)",
       "orgType": "academic",
       "tagline": "文件即记忆，可审计可演化的 Agent 记忆工具包",
       "logo": "RM",
@@ -918,7 +918,7 @@
         "type": "hybrid",
         "memoryLevels": ["个人记忆 (Personal)", "程序记忆 (Procedural)", "工具记忆 (Tool)", "工作记忆 (Working)"],
         "selfManaged": false,
-        "description": "AgentScope 团队的模块化记忆工具包，核心是「文件即记忆」：记忆以可读文本文件沉淀，用户可改可迁移。通过多维度蒸馏、上下文自适应重用和基于效用的遗忘实现可审计、可演化的长期记忆，已集成进 AgentScope 1.0"
+        "description": "AgentScope 团队的模块化记忆工具包，核心是「文件即记忆」：记忆以可读文本文件沉淀，用户可改可迁移。通过多维度蒸馏、上下文自适应重用和基于效用的遗忘实现可审计、可演化的长期记忆，在 AgentScope 中作为可选长期记忆实现提供（需显式安装启用，非默认开启）"
       },
       "metrics": {
         "latency": 89,
@@ -931,7 +931,7 @@
         "freeTier": true,
         "startingPrice": 0,
         "model": "open-source",
-        "details": "Apache-2.0 开源，GitHub 1.8K stars，作为 AgentScope 1.0 长期记忆默认实现"
+        "details": "开源，GitHub 1.8K stars；在 AgentScope 中作为可选长期记忆实现提供（需显式安装启用，非默认开启）"
       },
       "links": {
         "website": "https://github.com/modelscope/agentscope",
@@ -962,7 +962,7 @@
         "「文件即记忆」，可读可改可迁移、可审计",
         "多维度蒸馏 + 效用遗忘，记忆可演化",
         "8B 小模型借 ReMe 挑战大模型表现",
-        "已在 AgentScope 1.0 作为默认记忆实现"
+        "在 AgentScope 中作为可选长期记忆实现提供（需显式安装启用，非默认开启）"
       ],
         "limitations": [
         "主要面向 AgentScope 生态",
