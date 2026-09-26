@@ -1,0 +1,14 @@
+{
+  "timeout": 15,
+  "targets": [
+    { "url": "https://timem-ai.github.io/agent-memory/", "expect": "记忆引擎" },
+    { "url": "https://timem-ai.github.io/agent-memory/evaluate/", "expect": "评测对比" },
+    { "url": "https://timem-ai.github.io/agent-memory/engines/", "expect": "引擎档案" },
+    { "url": "https://timem-ai.github.io/agent-memory/leaderboard/", "expect": "Agent Memory Leaderboard" },
+    { "url": "https://timem-ai.github.io/agent-memory/engines/mem0/", "expect": "Mem0" },
+    { "url": "https://timem-ai.github.io/agent-memory/insights/", "expect": "洞察文章" },
+    { "url": "https://timem-ai.github.io/agent-memory/sitemap.xml", "sitemap": true },
+    { "url": "https://timem-ai.github.io/agent-memory/robots.txt", "robots": true },
+    { "url": "https://agent-memory.cn/", "expect": "记忆引擎", "optional": true }
+  ]
+}

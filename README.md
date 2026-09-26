@@ -35,6 +35,21 @@
 | 开发体验 | 15% | 文档、SDK、集成难度 |
 | 场景适配 | 10% | 短对话、长对话、多模态 |
 
+## 外部榜单对标 (AML)
+
+收录 [Agent Memory Leaderboard](https://agentmemories.ai/leaderboard/industry/textual)（天津大学等 27 家机构联合运营）的公开榜单快照：Textual / Coding 赛道 Cycle 1 完整排名，并对照本站引擎位次。见 `/leaderboard` 页面，数据在 `src/data/aml_leaderboard.json`（快照 2026-09-26，AML Cycle 2 文本赛道 2026-10-31 截止后建议刷新）。
+
+## 站点监控 (site-monitor skill)
+
+`.zcode/skills/site-monitor/` 内置零依赖监控 skill：检查线上页面可用性、SEO 元信息、sitemap / robots.txt 健康度。
+
+```bash
+python3 .zcode/skills/site-monitor/scripts/check_site.py            # 全量检查
+python3 .zcode/skills/site-monitor/scripts/check_site.py --json     # 机器可读输出
+```
+
+GitHub Actions（`.github/workflows/site-monitor.yml`）每天 02:00 UTC 自动跑一遍，报告存为 artifact。
+
 ## 技术栈
 
 - **Next.js 15** (App Router)
@@ -67,14 +82,21 @@ src/
     evaluate/page.tsx     # 评测对比
     engines/page.tsx      # 引擎列表
     engines/[name]/       # 引擎详情
+    leaderboard/page.tsx  # 外部榜单对标 (AML)
     insights/page.tsx     # 洞察文章
     insights/[slug]/      # 文章详情
     layout.tsx            # 全局布局 + SEO
+    sitemap.ts            # sitemap.xml（SEO）
+    robots.ts             # robots.txt（SEO）
   components/
     engine/               # 引擎卡片、雷达图
+    leaderboard/          # AML 榜单表格（按赛道/组别切换）
     layout/               # 导航栏
   data/
     engines.json          # 引擎数据 + 资源
+    aml_leaderboard.json  # AML 榜单快照
+.zcode/
+  skills/site-monitor/    # 站点监控 skill（可用性 + SEO）
 ```
 
 ## 在线访问与部署

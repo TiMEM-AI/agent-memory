@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Brain, Menu, X, Layers, BarChart3, BookOpen } from 'lucide-react'
+import { Brain, Menu, X, Layers, BarChart3, BookOpen, Trophy } from 'lucide-react'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,6 +11,7 @@ export default function Navbar() {
     { href: '/', label: '首页', icon: Brain },
     { href: '/evaluate', label: '评测对比', icon: BarChart3 },
     { href: '/engines', label: '引擎档案', icon: Layers },
+    { href: '/leaderboard', label: '外部榜单', icon: Trophy },
     { href: '/insights', label: '洞察文章', icon: BookOpen },
   ]
 
