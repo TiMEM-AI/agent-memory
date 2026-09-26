@@ -66,12 +66,29 @@ function renderInline(text: string): ReactNode[] {
   })
 }
 
+// 提取正文中的 ## 标题作为目录项，id 与渲染时的 h2 锚点一一对应
+function extractHeadings(content: string): { id: string; text: string }[] {
+  const body = content.trimStart().startsWith('# ')
+    ? content.trimStart().replace(/^#[^\n]*\n/, '')
+    : content
+  return body
+    .split('\n')
+    .filter((line) => line.startsWith('## '))
+    .map((line, index) => ({
+      id: `h2-${index}`,
+      text: line.replace('## ', '').trim(),
+    }))
+}
+
 function renderContent(content: string): ReactNode[] {
   // 正文首行的大标题与头部卡片重复，跳过以减少视觉噪音
-  const body = content.startsWith('# ') ? content.replace(/^#[^\n]*\n/, '') : content
+  const body = content.trimStart().startsWith('# ')
+    ? content.trimStart().replace(/^#[^\n]*\n/, '')
+    : content
   const lines = body.split('\n')
   const nodes: ReactNode[] = []
   let i = 0
+  let h2Index = 0
 
   while (i < lines.length) {
     const line = lines[i]
@@ -149,8 +166,13 @@ function renderContent(content: string): ReactNode[] {
       continue
     }
     if (line.startsWith('## ')) {
+      const headingId = `h2-${h2Index++}`
       nodes.push(
-        <h2 key={nodes.length} className="font-serif text-2xl font-bold text-ink-deep mt-8 mb-4">
+        <h2
+          key={nodes.length}
+          id={headingId}
+          className="font-serif text-2xl font-bold text-ink-deep mt-8 mb-4 scroll-mt-28"
+        >
           {line.replace('## ', '')}
         </h2>
       )
@@ -250,12 +272,14 @@ export default function InsightDetail({ params }: { params: Promise<{ slug: stri
     )
   }
 
+  const toc = extractHeadings(insight.content)
+
   return (
     <div className="min-h-screen bg-paper texture-paper">
       <Navbar />
 
       <main className="pt-24 pb-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -271,12 +295,40 @@ export default function InsightDetail({ params }: { params: Promise<{ slug: stri
             </Link>
           </motion.div>
 
+          <div className="xl:flex xl:items-start xl:gap-10">
+            {/* 目录侧栏：仅桌面端显示，移动端布局保持不变 */}
+            <aside className="hidden xl:block w-60 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto">
+              <div className="glass rounded-2xl p-5 shadow-card">
+                <div className="text-xs font-semibold uppercase tracking-widest text-ink-light mb-2">
+                  目录
+                </div>
+                <nav>
+                  {toc.map((h) => (
+                    <a
+                      key={h.id}
+                      href={`#${h.id}`}
+                      onClick={(e) => {
+                        // 显式滚动而非依赖 CSS smooth：部分内核下平滑滚动不生效
+                        e.preventDefault()
+                        document.getElementById(h.id)?.scrollIntoView({ behavior: 'instant', block: 'start' })
+                        history.replaceState(null, '', `#${h.id}`)
+                      }}
+                      className="block py-1.5 text-sm leading-snug text-ink-light hover:text-gold transition-colors line-clamp-2"
+                    >
+                      {h.text}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+
+            <div className="min-w-0 flex-1">
           {/* Article Header */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
             transition={{ duration: 0.4 }}
-            className="bg-white rounded-2xl p-8 shadow-card mb-8"
+            className="bg-white rounded-2xl p-8 md:p-10 shadow-card mb-8"
           >
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold/10 text-gold text-sm font-medium mb-4">
               {insight.category}
@@ -307,9 +359,9 @@ export default function InsightDetail({ params }: { params: Promise<{ slug: stri
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: mounted ? 1 : 0, y: mounted ? 0 : 20 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 shadow-card prose prose-lg max-w-none"
+            className="bg-white rounded-2xl p-8 md:p-10 shadow-card prose prose-lg max-w-none"
           >
-            <div className="text-ink leading-relaxed">
+            <div className="text-ink leading-relaxed lg:text-[17px] lg:leading-[1.9]">
               {renderContent(insight.content)}
             </div>
           </motion.div>
@@ -349,6 +401,8 @@ export default function InsightDetail({ params }: { params: Promise<{ slug: stri
                 ))}
             </div>
           </motion.div>
+            </div>
+          </div>
         </div>
       </main>
 
