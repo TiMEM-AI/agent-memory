@@ -67,7 +67,9 @@ function renderInline(text: string): ReactNode[] {
 }
 
 function renderContent(content: string): ReactNode[] {
-  const lines = content.split('\n')
+  // 正文首行的大标题与头部卡片重复，跳过以减少视觉噪音
+  const body = content.startsWith('# ') ? content.replace(/^#[^\n]*\n/, '') : content
+  const lines = body.split('\n')
   const nodes: ReactNode[] = []
   let i = 0
 
@@ -119,7 +121,21 @@ function renderContent(content: string): ReactNode[] {
     }
 
     if (line.startsWith('```')) {
+      const codeLines: string[] = []
       i++
+      while (i < lines.length && !lines[i].startsWith('```')) {
+        codeLines.push(lines[i])
+        i++
+      }
+      i++
+      nodes.push(
+        <pre
+          key={nodes.length}
+          className="my-6 overflow-x-auto rounded-xl bg-ink-deep p-4 text-sm leading-relaxed text-paper/90 font-mono"
+        >
+          <code>{codeLines.join('\n')}</code>
+        </pre>
+      )
       continue
     }
 
